@@ -1,13 +1,15 @@
 name: kappa
 description: "A robust, modular Flutter framework following Clean Architecture and BLoC for rapid high-quality mobile development."
 version: 1.0.0
-homepage: https://github.com/nofine/kappa
+homepage: https://github.com/slym1v98/kappa
+repository: https://github.com/slym1v98/kappa
 
 environment:
   sdk: ^3.10.7
   flutter: '>=3.3.0'
 
 dependencies:
+  args: ^2.7.0
   dio: ^5.9.1
   dio_cache_interceptor: ^3.5.1
   dio_cache_interceptor_hive_store: ^4.0.0
@@ -24,6 +26,7 @@ dependencies:
   json_annotation: ^4.11.0
   path_provider: ^2.1.5
   plugin_platform_interface: ^2.0.2
+  recase: ^4.1.0
   responsive_framework: ^1.5.1
   sentry_flutter: ^9.14.0
 
