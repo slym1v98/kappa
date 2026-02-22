@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:kappa/kappa.dart' hide State;
+import 'package:flownest_kappa/kappa.dart' hide State;
 
 class GalleryPage extends StatefulWidget with KappaSpacing, KappaResponsive {
   const GalleryPage({super.key});

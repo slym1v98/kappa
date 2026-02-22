@@ -1,4 +1,4 @@
-import 'package:kappa/kappa.dart';
+import 'package:flownest_kappa/kappa.dart';
 import 'dart:async';
 import 'package:equatable/equatable.dart';
 import '../../../../shared/events/counter_events.dart';

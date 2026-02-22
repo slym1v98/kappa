@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:kappa/kappa.dart';
+import 'package:flownest_kappa/kappa.dart';
 import 'modules/counter/counter_module.dart';
 import 'modules/history/history_module.dart';
 import 'modules/user/user_module.dart';

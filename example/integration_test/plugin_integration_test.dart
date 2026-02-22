@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:integration_test/integration_test.dart';
-import 'package:kappa/kappa.dart';
+import 'package:flownest_kappa/kappa.dart';
 import 'package:kappa_example/modules/settings/settings_module.dart';
 import 'package:kappa_example/modules/user/user_module.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';

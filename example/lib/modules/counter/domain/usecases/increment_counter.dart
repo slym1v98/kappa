@@ -1,4 +1,4 @@
-import 'package:kappa/kappa.dart';
+import 'package:flownest_kappa/kappa.dart';
 import '../../domain/repositories/i_counter_repository.dart';
 import '../../../../shared/events/counter_events.dart'; // Using the shared event
 

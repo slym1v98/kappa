@@ -1,4 +1,4 @@
-import 'package:kappa/kappa.dart';
+import 'package:flownest_kappa/kappa.dart';
 
 /// Low-level data source (could be SharedPreferences or API).
 class CounterLocalDataSource extends BaseDataSource {

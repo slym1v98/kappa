@@ -1,4 +1,4 @@
-import 'package:kappa/kappa.dart';
+import 'package:flownest_kappa/kappa.dart';
 import 'package:equatable/equatable.dart';
 
 // --- State ---

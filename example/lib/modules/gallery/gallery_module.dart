@@ -1,4 +1,4 @@
-import 'package:kappa/kappa.dart';
+import 'package:flownest_kappa/kappa.dart';
 import 'presentation/pages/gallery_page.dart';
 
 class GalleryModule extends KappaModule {

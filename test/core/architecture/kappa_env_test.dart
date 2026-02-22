@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:kappa/kappa.dart';
+import 'package:flownest_kappa/kappa.dart';
 
 void main() {
   group('KappaEnv Tests', () {

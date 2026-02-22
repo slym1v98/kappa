@@ -1,4 +1,4 @@
-import 'package:kappa/kappa.dart';
+import 'package:flownest_kappa/kappa.dart';
 import 'presentation/bloc/settings_bloc.dart';
 import 'presentation/pages/settings_page.dart';
 

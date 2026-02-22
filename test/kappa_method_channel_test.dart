@@ -1,6 +1,6 @@
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:kappa/kappa_method_channel.dart';
+import 'package:flownest_kappa/kappa_method_channel.dart';
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();

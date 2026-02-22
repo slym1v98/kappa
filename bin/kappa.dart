@@ -59,8 +59,8 @@ void main(List<String> args) {
 }
 
 void _printHelp() {
-  print('Kappa CLI v1.0.0');
-  print('Usage: kappa generate <type> [arguments]');
+  print('Flownest Kappa CLI v1.0.0');
+  print('Usage: flownest_kappa generate <type> [arguments]');
   print('\nCommands:');
   print('  module <name>                     - Create a full module structure');
   print('  usecase <module> <name>           - Create a UseCase in a module');
@@ -85,7 +85,7 @@ void _generateDataSource(String module, String name) {
   Directory(dir).createSync(recursive: true);
 
   File('$dir/${fileName}_remote_data_source.dart').writeAsStringSync('''
-import 'package:kappa/kappa.dart';
+import 'package:flownest_kappa/kappa.dart';
 
 abstract class I${className}RemoteDataSource extends BaseDataSource {
   // TODO: Add methods (e.g., Future<Response> getData())
@@ -111,7 +111,7 @@ void _generateWidget(String module, String name) {
   Directory(dir).createSync(recursive: true);
   File('$dir/$fileName.dart').writeAsStringSync('''
 import 'package:flutter/material.dart';
-import 'package:kappa/kappa.dart';
+import 'package:flownest_kappa/kappa.dart';
 
 class $className extends StatelessWidget with KappaSpacing {
   const $className({super.key});
@@ -148,7 +148,7 @@ void _generateModule(String name) {
   }
 
   File('lib/modules/$moduleName/${moduleName}_module.dart').writeAsStringSync('''
-import 'package:kappa/kappa.dart';
+import 'package:flownest_kappa/kappa.dart';
 import 'package:flutter/widgets.dart';
 
 class ${className}Module extends KappaModule {
@@ -182,7 +182,7 @@ void _generateUseCase(String module, String name) {
 
   // File Code
   File('$dir/$fileName.dart').writeAsStringSync('''
-import 'package:kappa/kappa.dart';
+import 'package:flownest_kappa/kappa.dart';
 
 class $className extends BaseUseCase<dynamic, NoParams> {
   @override
@@ -196,7 +196,7 @@ class $className extends BaseUseCase<dynamic, NoParams> {
   File('$testDir/${fileName}_test.dart').writeAsStringSync('''
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:kappa/kappa.dart';
+import 'package:flownest_kappa/kappa.dart';
 import 'package:kappa_app/modules/$module/domain/usecases/$fileName.dart';
 
 void main() {
@@ -226,7 +226,7 @@ void _generateBloc(String module, String name) {
   Directory(testDir).createSync(recursive: true);
 
   File('$dir/${fileName}_bloc.dart').writeAsStringSync('''
-import 'package:kappa/kappa.dart';
+import 'package:flownest_kappa/kappa.dart';
 import 'package:equatable/equatable.dart';
 
 abstract class ${className}Event extends Equatable {
@@ -282,7 +282,7 @@ void _generateRepository(String module, String name) {
   Directory(testDir).createSync(recursive: true);
 
   File('$interfaceDir/i_${fileName}_repository.dart').writeAsStringSync('''
-import 'package:kappa/kappa.dart';
+import 'package:flownest_kappa/kappa.dart';
 
 abstract class I${className}Repository extends BaseRepository {
   Future<Either<Failure, dynamic>> getData();
@@ -290,7 +290,7 @@ abstract class I${className}Repository extends BaseRepository {
 ''');
 
   File('$implDir/${fileName}_repository_impl.dart').writeAsStringSync('''
-import 'package:kappa/kappa.dart';
+import 'package:flownest_kappa/kappa.dart';
 import '../../domain/repositories/i_${fileName}_repository.dart';
 
 class ${className}RepositoryImpl extends I${className}Repository {
@@ -304,7 +304,7 @@ class ${className}RepositoryImpl extends I${className}Repository {
   File('$testDir/${fileName}_repository_impl_test.dart').writeAsStringSync('''
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:kappa/kappa.dart';
+import 'package:flownest_kappa/kappa.dart';
 import 'package:kappa_app/modules/$module/data/repositories/${fileName}_repository_impl.dart';
 
 void main() {
@@ -332,7 +332,7 @@ void _generatePage(String module, String name) {
   Directory(dir).createSync(recursive: true);
   File('$dir/${fileName}_page.dart').writeAsStringSync('''
 import 'package:flutter/material.dart';
-import 'package:kappa/kappa.dart';
+import 'package:flownest_kappa/kappa.dart';
 
 class ${className}Page extends StatelessWidget with KappaSpacing {
   const ${className}Page({super.key});

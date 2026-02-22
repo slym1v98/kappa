@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:kappa/kappa.dart';
+import 'package:flownest_kappa/kappa.dart';
 import 'package:mocktail/mocktail.dart';
 
 class MockGoRouterState extends Mock implements GoRouterState {}

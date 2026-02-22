@@ -1,4 +1,4 @@
-name: kappa
+name: flownest_kappa
 description: "A robust, modular Flutter framework following Clean Architecture and BLoC for rapid high-quality mobile development."
 version: 1.0.0
 homepage: https://github.com/slym1v98/kappa

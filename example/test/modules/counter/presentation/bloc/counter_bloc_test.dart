@@ -1,7 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:bloc_test/bloc_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:kappa/kappa.dart';
+import 'package:flownest_kappa/kappa.dart';
 import 'package:kappa_example/modules/counter/domain/usecases/increment_counter.dart';
 import 'package:kappa_example/modules/counter/presentation/bloc/counter_bloc.dart';
 
