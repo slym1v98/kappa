@@ -1,8 +1,8 @@
 PODS:
+  - fkappa (0.0.1):
+    - Flutter
   - Flutter (1.0.0)
   - integration_test (0.0.1):
-    - Flutter
-  - kappa (0.0.1):
     - Flutter
   - package_info_plus (0.4.5):
     - Flutter
@@ -13,9 +13,9 @@ PODS:
     - Sentry/HybridSDK (= 8.56.2)
 
 DEPENDENCIES:
+  - fkappa (from `.symlinks/plugins/fkappa/ios`)
   - Flutter (from `Flutter`)
   - integration_test (from `.symlinks/plugins/integration_test/ios`)
-  - kappa (from `.symlinks/plugins/kappa/ios`)
   - package_info_plus (from `.symlinks/plugins/package_info_plus/ios`)
   - sentry_flutter (from `.symlinks/plugins/sentry_flutter/ios`)
 
@@ -24,21 +24,21 @@ SPEC REPOS:
     - Sentry
 
 EXTERNAL SOURCES:
+  fkappa:
+    :path: ".symlinks/plugins/fkappa/ios"
   Flutter:
     :path: Flutter
   integration_test:
     :path: ".symlinks/plugins/integration_test/ios"
-  kappa:
-    :path: ".symlinks/plugins/kappa/ios"
   package_info_plus:
     :path: ".symlinks/plugins/package_info_plus/ios"
   sentry_flutter:
     :path: ".symlinks/plugins/sentry_flutter/ios"
 
 SPEC CHECKSUMS:
+  fkappa: 47eab3c2814fd8268e63b33b5e2f965f6451bab3
   Flutter: cabc95a1d2626b1b06e7179b784ebcf0c0cde467
   integration_test: 4a889634ef21a45d28d50d622cf412dc6d9f586e
-  kappa: e8bd8ca45b5f2d8fc443a6abe11c946251ca896e
   package_info_plus: af8e2ca6888548050f16fa2f1938db7b5a5df499
   Sentry: b53951377b78e21a734f5dc8318e333dbfc682d7
   sentry_flutter: 841fa2fe08dc72eb95e2320b76e3f751f3400cf5

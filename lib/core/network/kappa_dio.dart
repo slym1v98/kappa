@@ -17,7 +17,6 @@ class FKappaDio {
           ? CacheOptions(
               store: MemCacheStore(), // Default to memory, can be swapped to Hive
               policy: CachePolicy.refreshForceCache,
-              hitCacheOnErrorExcept: [401, 403],
               maxStale: const Duration(days: 7),
             )
           : null {
