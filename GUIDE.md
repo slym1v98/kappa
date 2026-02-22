@@ -1,147 +1,102 @@
-# Kappa Framework - Developer Guide
+# Kappa Framework - Developer Guide (v1.0.0)
 
-Chào mừng bạn đến với tài liệu hướng dẫn phát triển ứng dụng bằng **Kappa Framework**. Kappa được thiết kế để giúp bạn xây dựng ứng dụng Flutter nhanh chóng, linh hoạt và có tính tùy biến cao dựa trên nền tảng Clean Architecture và BLoC.
-
----
-
-## 1. Kiến trúc cốt lõi (Core Architecture)
-
-Kappa áp dụng nghiêm ngặt **Clean Architecture** để phân tách rõ ràng các tầng (layers):
-
--   **Domain Layer**: Chứa Business Logic nguyên bản (`Entities`, `UseCases`, `Repositories Interface`). Không phụ thuộc vào bất kỳ library nào (trừ `fpdart` cho functional programming).
--   **Data Layer**: Thực thi các Repositories, kết nối với API (`DataSources`) hoặc Local DB.
--   **Presentation Layer**: Sử dụng `BLoC` để quản lý trạng thái và các `Pages/Widgets` để hiển thị UI.
-
-### Lớp cơ sở (Base Classes)
--   `BaseUseCase<Type, Params>`: Mọi logic nghiệp vụ phải nằm trong UseCase. Trả về `Either<Failure, Type>`.
--   `BaseHydratedBloc<E, S>`: BLoC tự động lưu trạng thái vào ổ đĩa.
--   `KappaModule`: Contract bắt buộc cho mỗi feature module.
+Hướng dẫn chi tiết cách khai thác tối đa sức mạnh của Kappa Framework.
 
 ---
 
-## 2. Hệ thống Module
+## 1. Công cụ Kappa CLI ⚡
 
-Mọi tính năng trong Kappa là một Module độc lập.
+Sử dụng CLI để duy trì cấu trúc code đồng nhất và tự động sinh test.
 
-### Cách tạo Module mới bằng CLI:
-Sử dụng công cụ dòng lệnh tích hợp để tạo nhanh cấu trúc module:
-```bash
-dart run kappa generate module <tên_module>
+| Lệnh                                     | Mô tả                                                    |
+|:-----------------------------------------|:---------------------------------------------------------|
+| `kappa generate module <name>`           | Tạo cấu trúc Module đầy đủ (Data, Domain, Presentation). |
+| `kappa generate usecase <mod> <name>`    | Tạo UseCase kèm file Unit Test mẫu.                      |
+| `kappa generate bloc <mod> <name>`       | Tạo BLoC (Event/State) kèm BLoC Test mẫu.                |
+| `kappa generate repository <mod> <name>` | Tạo Repository Interface và Implementation kèm test.     |
+| `kappa generate datasource <mod> <name>` | Tạo Remote DataSource tích hợp sẵn `KappaDio`.           |
+| `kappa generate page <mod> <name>`       | Tạo giao diện trang mới với `KappaAppBar`.               |
+| `kappa generate widget <mod> <name>`     | Tạo widget nhỏ tái sử dụng trong module.                 |
+
+---
+
+## 2. Giao tiếp giữa các Module 🤝
+
+### A. Event Bus (Giao tiếp bất đồng bộ)
+Dùng khi Module A muốn phát thông tin cho "thế giới bên ngoài".
+```dart
+// Phát tin
+KappaEventBus.emit(UserLoggedOutEvent());
+
+// Nhận tin (ở Module khác)
+KappaEventBus.on<UserLoggedOutEvent>().listen((_) => clearLocalCache());
 ```
 
-### Đăng ký Module:
-Tại `main.dart`, bạn chỉ cần khai báo module vào `KappaApp`:
+### B. Service Registry (Giao tiếp trực tiếp)
+Dùng khi cần gọi hàm và lấy kết quả ngay lập tức (Request-Response).
 ```dart
-KappaApp(
-  modules: [
-    AuthModule(),
-    ProductModule(),
-    SettingsModule(),
-  ],
-  initialRoute: '/home',
+// Module User xuất bản Service
+KappaServiceRegistry.register<IAuthService>(AuthServiceImpl());
+
+// Module Cart sử dụng Service
+final auth = KappaServiceRegistry.get<IAuthService>();
+print(auth.getUserName());
+```
+
+---
+
+## 3. Hệ thống UI & Animation 🎬
+
+### Adaptive UI Kit
+Các components của Kappa tự động thay đổi theo OS:
+- `KappaButton`, `KappaTextField`, `KappaCard`, `KappaListTile`.
+- `KappaAppBar`, `KappaBottomNavigationBar`, `KappaLoadingIndicator`.
+
+### Animation & Transitions
+Sử dụng hiệu ứng khai báo:
+```dart
+KappaAnimatedView(
+  type: KappaAnimationType.slideInUp,
+  delay: Duration(milliseconds: 200),
+  child: MyCard(),
+)
+```
+Cấu hình chuyển trang trong GoRouter:
+```dart
+GoRoute(
+  path: '/settings',
+  pageBuilder: (context, state) => KappaPageTransition.zoom(child: SettingsPage(), key: state.pageKey),
 )
 ```
 
 ---
 
-## 3. Giao tiếp giữa các Module (Inter-module Communication)
+## 4. Networking & Offline-First 🌐
 
-Kappa cung cấp 2 cơ chế để các module "nói chuyện" với nhau mà không gây phụ thuộc chéo (Circular Dependency):
-
-### A. Event Bus (Reactive - Giao tiếp lỏng)
-Dùng khi Module A muốn thông báo một sự kiện mà không quan tâm ai lắng nghe.
--   **Phát tin**: `KappaEventBus.emit(UserLoggedInEvent(user));`
--   **Nhận tin**: 
-    ```dart
-    KappaEventBus.on<UserLoggedInEvent>().listen((event) {
-      // Xử lý logic tại module khác
-    });
-    ```
-
-### B. Service Registry (Direct - Giao tiếp chặt)
-Dùng khi Module A muốn gọi trực tiếp một hàm từ Module B và lấy kết quả ngay.
--   **Đăng ký**: `KappaServiceRegistry.register<IAuthService>(AuthService());`
--   **Sử dụng**: `final auth = KappaServiceRegistry.get<IAuthService>();`
-
----
-
-## 4. Networking & API Mocking
-
-Kappa sử dụng `KappaDio` tích hợp sẵn các interceptors thông minh.
-
-### Giả lập API (Mocking):
-Bạn có thể phát triển giao diện ngay cả khi Backend chưa xong:
+`KappaDio` tự động quản lý cache. Bạn có thể cấu hình tại `KappaApp`:
 ```dart
-final dio = KappaDio(
+KappaApp(
   baseUrl: 'https://api.example.com',
-  interceptors: [
-    KappaMockInterceptor(
-      mockData: {
-        '/user/profile': {'id': '1', 'name': 'Mock User'}
-      },
-      delay: Duration(seconds: 1),
-    ),
-  ],
-);
+  interceptors: [ /* interceptors của bạn */ ],
+)
 ```
+**Chiến lược:** Nếu server lỗi hoặc mất mạng, `KappaDio` sẽ tự động lục tìm trong cache để trả về dữ liệu gần nhất cho người dùng.
 
 ---
 
-## 5. UI & Responsive Toolkit
+## 5. Quản lý Môi trường (Flavors) 🧪
 
-### Responsive Layout:
-Tự động thay đổi giá trị theo kích thước màn hình (Mobile, Tablet, Desktop):
+Sử dụng script `./scripts/build_flavors.sh` để chạy ứng dụng:
+-   **Phát triển:** `./build_flavors.sh run dev`
+-   **Sản xuất:** `./build_flavors.sh build prod` (Tự động làm rối mã nguồn).
+
+---
+
+## 6. Global Loading Overlay ⏳
+
+Hiển thị loading toàn ứng dụng (che phủ cả AppBar/BottomNav):
 ```dart
-final fontSize = KappaResponsive.valueByBreakpoint(
-  context, 
-  mobile: 16.0, 
-  tablet: 24.0, 
-  desktop: 32.0
-);
+KappaLoading.show(); // Hiện
+await processTask();
+KappaLoading.hide(); // Ẩn
 ```
-
-### Smart Components:
-Sử dụng `KappaButton` để tự động render theo Style của OS (Material 3 trên Android, Cupertino trên iOS).
-
----
-
-## 6. Lưu trữ trạng thái vĩnh viễn (Persistence)
-
-Để một BLoC tự động lưu dữ liệu (ví dụ: Giỏ hàng, Cài đặt):
-1.  Kế thừa `BaseHydratedBloc`.
-2.  Override `fromJson` và `toJson`.
-
-```dart
-class SettingsBloc extends BaseHydratedBloc<bool, SettingsState> {
-  @override
-  SettingsState? fromJson(Map<String, dynamic> json) => SettingsState.fromMap(json);
-
-  @override
-  Map<String, dynamic>? toJson(SettingsState state) => state.toMap();
-}
-```
-
----
-
-## 7. Giám sát & Lỗi (Monitoring)
-
-Kappa tích hợp sẵn **Sentry** và **Global Bloc Observer**:
--   Mọi lỗi Logic hoặc Network sẽ được log tập trung.
--   Trong môi trường Production, lỗi sẽ được tự động gửi về dashboard Sentry.
-
----
-
-## 8. Quy trình Test (Testing)
-
-Kappa khuyến khích viết test ở 3 mức:
-1.  **Unit Test**: Test các `UseCase` và `Repository`.
-2.  **Bloc Test**: Sử dụng `bloc_test` để kiểm tra luồng trạng thái.
-3.  **Integration Test**: Kiểm tra việc bắn/nhận sự kiện qua `Event Bus` giữa 2 module.
-
-```bash
-# Chạy toàn bộ test
-flutter test
-```
-
----
-*Tài liệu này được tạo tự động bởi Kappa Framework Assistant.*

@@ -1,110 +1,41 @@
-# Kappa Framework Architecture Specification
+# Kappa Framework Architecture Blueprint
 
-## 1. Overview
-Kappa is a highly customizable, modular Flutter framework designed for rapid development of Android and iOS applications. It strictly adheres to **Clean Architecture** principles and leverages **BLoC** for state management, **GoRouter** for navigation, and **GetIt** for dependency injection.
+Tài liệu này mô tả chi tiết các thành phần hạ tầng và triết lý kiến trúc của Kappa.
 
-## 2. Core Principles
-- **Strict Clean Architecture:** Enforced via Base Classes (`BaseUseCase`, `BaseRepository`, `BaseDataSource`).
-- **Modular Design:** Features are encapsulated in self-contained `KappaModule`s.
-- **Reactive Communication:** Modules communicate strictly via an **Event Bus** to ensure loose coupling.
-- **Hybrid UI System:** Provides both pre-styled "Smart Components" (Material 3 & HIG optimized) and low-level "UI Toolkits" for custom designs.
-- **Code Generation:** Heavily utilizes `build_runner` (Freezed, JSON Serializable) for type safety and productivity.
+## 1. Clean Architecture Strict Mode
+Kappa không chỉ khuyến khích mà còn **ép buộc** Clean Architecture qua các lớp trừu tượng:
 
-## 3. Project Structure
-The framework (and apps built with it) will follow this directory structure:
+-   **Domain Layer (Purity):** Tuyệt đối không chứa code UI hoặc Framework (trừ DI). `BaseUseCase` sử dụng `fpdart.Either` để ép buộc việc xử lý lỗi (functional error handling).
+-   **Data Layer (Abstraction):** `BaseRepository` và `BaseDataSource` tách rời nguồn dữ liệu.
+-   **Presentation Layer (BLoC):** Sử dụng `flutter_bloc` để tách rời State và Logic UI. Hỗ trợ `BaseHydratedBloc` để tự động lưu trạng thái vào Disk.
 
-```
-lib/
-├── core/                   # Framework Core
-│   ├── architecture/       # Base classes (UseCase, Repository, etc.)
-│   ├── di/                 # Dependency Injection setup
-│   ├── error/              # Standardized Failure/Exception classes
-│   ├── event_bus/          # Inter-module communication system
-│   └── network/            # KappaDio client & Interceptors
-├── ui/                     # UI System
-│   ├── components/         # Pre-styled Widgets (KappaButton, KappaCard)
-│   ├── toolkit/            # Mixins, Spacing, Typography helpers
-│   └── theme/              # Theme configuration (Material 3 / Cupertino)
-├── modules/                # Base Module Interfaces
-│   └── kappa_module.dart   # The contract every feature module must implement
-└── kappa.dart              # Main library export
-```
+## 2. Infrastructure Layer (The Core)
 
-## 4. Module System (`KappaModule`)
-Every feature in a Kappa app must be a module.
+### Dependency Injection (GetIt)
+Quản lý tập trung tại `KappaApp`. Mỗi module tự đăng ký dependency của mình khi được nạp vào hệ thống.
 
-```dart
-abstract class KappaModule {
-  /// Unique name for the module (e.g., 'Auth', 'Cart')
-  String get name;
+### Unified Routing (GoRouter)
+Hệ thống Route của các module được "donate" vào `KappaApp` để xây dựng một bản đồ điều hướng duy nhất. Hỗ trợ **Middleware** (Auth/Guest) để bảo vệ route tập trung.
 
-  /// Register module-specific routes
-  List<RouteBase> get routes;
+### Reactive Connectivity (KappaDio)
+Được xây dựng trên Dio với:
+-   `DioCacheInterceptor`: Hỗ trợ lưu trữ offline.
+-   `KappaMockInterceptor`: Cho phép giả lập API trả về JSON tĩnh.
+-   `KappaBlocObserver`: Giám sát toàn bộ thay đổi trạng thái của app.
 
-  /// Register dependencies (BLoCs, UseCases, Repositories)
-  void registerDependencies();
+## 3. Communication Patterns
 
-  /// Initialize module logic (optional)
-  Future<void> init() async {}
-}
-```
+### Loose Coupling (Event Bus)
+Sử dụng `StreamController.broadcast()` để truyền tin nhắn giữa các module mà không cần import lẫn nhau.
 
-## 5. Clean Architecture Enforcers (Base Classes)
+### Contract-based (Service Registry)
+Sử dụng Singleton registry để trao đổi Service dựa trên Interface, giảm thiểu phụ thuộc chéo.
 
-### 5.1. UseCase
-Enforces a standard execution API using `Either` for functional error handling.
+## 4. UI Layer (Design Tokens & Grid)
+-   **Grid System:** 12-column grid thích ứng (`KappaGrid`).
+-   **Design Tokens:** Hệ thống hằng số (`KappaDesignTokens`) cho Radius, Spacing, Elevation.
+-   **Responsive:** Sử dụng `responsive_framework` tích hợp sâu trong `KappaApp`.
 
-```dart
-abstract class BaseUseCase<Type, Params> {
-  Future<Either<Failure, Type>> call(Params params);
-}
-```
-
-### 5.2. Repository & DataSource
-Standardizes data access patterns.
-
-```dart
-abstract class BaseRepository {
-  // Common repository logic
-}
-```
-
-### 5.3. BLoC
-Enforces state management patterns.
-
-```dart
-abstract class BaseBloc<E, S> extends Bloc<E, S> {
-  // Common BLoC logic (e.g., event logging, common error handling)
-}
-```
-
-## 6. Event Bus System
-Modules must not import each other. They communicate by publishing and subscribing to events.
-
-```dart
-// Publishing
-KappaEventBus.emit(UserLoggedOutEvent());
-
-// Subscribing (in another module)
-KappaEventBus.on<UserLoggedOutEvent>().listen((event) {
-  _cartRepository.clearCart();
-});
-```
-
-## 7. UI System (Hybrid)
-- **Smart Components:** `KappaButton`, `KappaTextField` automatically render Material or Cupertino styles based on the platform.
-- **Toolkit:** `KappaSpacing`, `KappaTypography` mixins allow developers to build custom widgets that stay consistent with the design system.
-
-## 8. Routing (Registry)
-Kappa maintains a central `GoRouter` configuration. Modules "donate" their routes to this registry at startup.
-
-```dart
-// In KappaApp initialization
-final router = GoRouter(
-  routes: [
-    ...authModule.routes,
-    ...productModule.routes,
-    ...cartModule.routes,
-  ],
-);
-```
+## 5. Security Model
+-   **Obfuscation:** Tích hợp trong build script bản Prod.
+-   **Flavor Isolation:** Phân tách hoàn toàn URL, API Key và Signing Certificates.

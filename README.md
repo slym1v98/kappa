@@ -1,52 +1,49 @@
 # Kappa Framework v1.0.0 🚀
 
-Kappa is a robust, modular, and highly customizable Flutter framework designed for rapid development of enterprise-grade applications. It strictly follows **Clean Architecture** principles and leverages **BLoC** for state management and **GoRouter** for navigation.
+Kappa là một Framework Flutter mã nguồn mở, hiện đại, được thiết kế để xây dựng các ứng dụng mobile quy mô lớn (Enterprise) với tốc độ nhanh kỷ lục nhưng vẫn đảm bảo tính ổn định và bảo mật cao.
 
-## Key Features
-- **Strict Clean Architecture:** Enforced via base classes for Use Cases, Repositories, and Data Sources.
-- **Decoupled Modules:** Build features independently with their own Routes, DI, and Logic.
-- **Reactive Communication:** Decouple modules using the global `KappaEventBus`.
-- **Hybrid UI Kit:** Adaptive components that look native on both Android (Material 3) and iOS (HIG).
-- **Persistence:** Automatic state persistence with `BaseHydratedBloc`.
-- **Networking:** Standardized `KappaDio` client with built-in API Mocking and Error Handling.
-- **Middleware:** Protect your routes with `Auth` and `Guest` guards out of the box.
-- **Developer Productivity:** Generate new modules in seconds using the `Kappa CLI`.
+## 🌟 Tại sao chọn Kappa?
 
-## Getting Started
+*   **🛡️ Strict Clean Architecture:** Ép buộc cấu trúc code sạch thông qua các Base Class (`UseCase`, `Repository`, `DataSource`).
+*   **🧩 True Modularity:** Các tính năng là các Module độc lập, có Route và DI riêng, dễ dàng tháo lắp.
+*   **📱 Adaptive UI Kit:** Bộ UI components thông minh tự động thay đổi giao diện theo Android (Material 3) và iOS (HIG).
+*   **⚡ Developer Productivity:** Công cụ CLI mạnh mẽ giúp sinh code và file test tự động chỉ trong vài giây.
+*   **🌐 Advanced Networking:** Tích hợp sẵn `KappaDio` với cơ chế Offline-First (Cache), Mocking và Error Handling.
+*   **🔐 Enterprise Security:** Hỗ trợ Flavor, Environment Isolation và tự động làm rối mã (Obfuscation).
+*   **🎬 Pro Animations:** Hệ thống hiệu ứng và chuyển trang (Page Transitions) tích hợp sẵn, mượt mà 120FPS.
 
-### 1. Add Dependency
-Add Kappa to your `pubspec.yaml`:
-```yaml
-dependencies:
-  kappa: ^1.0.0
+## 🚀 Bắt đầu nhanh
+
+### 1. Cài đặt CLI
+Để sử dụng các tính năng sinh code tự động:
+```bash
+# Trong thư mục dự án của bạn
+alias kappa='dart run bin/kappa.dart'
 ```
 
-### 2. Launch your App
-Use the `KappaApp` widget to initialize your modules:
+### 2. Tạo Module đầu tiên
+```bash
+kappa generate module auth
+```
+
+### 3. Khởi chạy ứng dụng
 ```dart
 void main() {
   runApp(
     KappaApp(
-      title: 'My Awesome App',
-      modules: [
-        AuthModule(),
-        ProductModule(),
-        SettingsModule(),
-      ],
-      initialRoute: '/home',
+      title: 'My Super App',
+      baseUrl: 'https://api.myapp.com',
+      modules: [ AuthModule(), MainModule() ],
+      initialRoute: '/login',
     ),
   );
 }
 ```
 
-### 3. Generate a Module
-Create a new feature module in seconds:
-```bash
-dart run kappa generate module <module_name>
-```
+## 📚 Tài liệu chi tiết
+*   [Developer Guide (Hướng dẫn phát triển)](GUIDE.md)
+*   [Architecture Blueprint (Bản thiết kế kiến trúc)](ARCHITECTURE.md)
+*   [Security & Signing (Bảo mật & Ký ứng dụng)](SECURITY.md)
 
-## Documentation
-For more detailed instructions, please check our [Developer Guide](GUIDE.md) and [Architecture Blueprint](ARCHITECTURE.md).
-
-## Support
-Built with ❤️ for rapid high-quality Flutter development.
+---
+Built with ❤️ for professional Flutter developers.
