@@ -1,4 +1,4 @@
-import 'package:fkappa/kappa.dart';
+import 'package:fkappa/fkappa.dart';
 import 'data/datasources/counter_local_data_source.dart';
 import 'data/repositories/counter_repository_impl.dart';
 import 'domain/repositories/i_counter_repository.dart';
@@ -6,7 +6,7 @@ import 'domain/usecases/increment_counter.dart';
 import 'presentation/bloc/counter_bloc.dart';
 import 'presentation/pages/counter_page.dart';
 
-class CounterModule extends KappaModule {
+class CounterModule extends FKappaModule {
   @override
   String get name => 'Counter';
 

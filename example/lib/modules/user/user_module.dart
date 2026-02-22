@@ -1,8 +1,8 @@
-import 'package:fkappa/kappa.dart';
+import 'package:fkappa/fkappa.dart';
 import '../../shared/services/i_auth_service.dart';
 
 class AuthService implements IAuthService {
-  final KappaDio dio;
+  final FKappaDio dio;
   String _cachedName = "Loading...";
 
   AuthService(this.dio) {
@@ -24,7 +24,7 @@ class AuthService implements IAuthService {
   bool isLoggedIn() => true;
 }
 
-class UserModule extends KappaModule {
+class UserModule extends FKappaModule {
   @override
   String get name => 'User';
 
@@ -33,10 +33,10 @@ class UserModule extends KappaModule {
 
   @override
   void registerDependencies(GetIt sl) {
-    // 1. Inject Global KappaDio into AuthService
-    sl.registerLazySingleton<IAuthService>(() => AuthService(sl<KappaDio>()));
+    // 1. Inject Global FKappaDio into AuthService
+    sl.registerLazySingleton<IAuthService>(() => AuthService(sl<FKappaDio>()));
 
     // 2. Expose to Global Registry
-    KappaServiceRegistry.register<IAuthService>(sl<IAuthService>());
+    FKappaServiceRegistry.register<IAuthService>(sl<IAuthService>());
   }
 }

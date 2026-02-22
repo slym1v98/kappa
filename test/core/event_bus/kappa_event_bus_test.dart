@@ -1,17 +1,17 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:fkappa/kappa.dart';
+import 'package:fkappa/fkappa.dart';
 
-class TestEvent extends KappaEvent {
+class TestEvent extends FKappaEvent {
   final String data;
   const TestEvent(this.data);
 }
 
-class AnotherEvent extends KappaEvent {}
+class AnotherEvent extends FKappaEvent {}
 
 void main() {
-  group('KappaEventBus Tests', () {
+  group('FKappaEventBus Tests', () {
     test('Should emit and receive events of the same type', () async {
-      final eventBus = KappaEventBus.on<TestEvent>();
+      final eventBus = FKappaEventBus.on<TestEvent>();
       const testData = "Hello Event Bus";
 
       expectLater(
@@ -19,18 +19,17 @@ void main() {
         emits(predicate<TestEvent>((event) => event.data == testData)),
       );
 
-      KappaEventBus.emit(const TestEvent(testData));
+      FKappaEventBus.emit(const TestEvent(testData));
     });
 
     test('Should NOT receive events of a different type', () async {
-      final eventBus = KappaEventBus.on<TestEvent>();
+      final eventBus = FKappaEventBus.on<TestEvent>();
       bool received = false;
 
       eventBus.listen((_) => received = true);
 
-      KappaEventBus.emit(AnotherEvent());
+      FKappaEventBus.emit(AnotherEvent());
       
-      // Wait a bit to ensure no event was received
       await Future.delayed(const Duration(milliseconds: 50));
       expect(received, isFalse);
     });

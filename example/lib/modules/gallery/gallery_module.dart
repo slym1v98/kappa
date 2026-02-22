@@ -1,7 +1,7 @@
-import 'package:fkappa/kappa.dart';
+import 'package:fkappa/fkappa.dart';
 import 'presentation/pages/gallery_page.dart';
 
-class GalleryModule extends KappaModule {
+class GalleryModule extends FKappaModule {
   @override
   String get name => 'Gallery';
 

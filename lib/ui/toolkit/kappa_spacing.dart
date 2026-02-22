@@ -2,7 +2,7 @@ import 'package:flutter/widgets.dart';
 
 /// Provides standardized spacing constants for consistent layout.
 /// Use this mixin in your Widgets or UI classes.
-mixin KappaSpacing {
+mixin FKappaSpacing {
   static const double tiny = 4.0;
   static const double small = 8.0;
   static const double medium = 16.0;

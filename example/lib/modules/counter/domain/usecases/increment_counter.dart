@@ -1,4 +1,4 @@
-import 'package:fkappa/kappa.dart';
+import 'package:fkappa/fkappa.dart';
 import '../../domain/repositories/i_counter_repository.dart';
 import '../../../../shared/events/counter_events.dart'; // Using the shared event
 
@@ -14,7 +14,7 @@ class IncrementCounterUseCase extends BaseUseCase<int, int> {
 
     return result.map((newValue) {
       // Notify other modules that counter has changed via Event Bus
-      KappaEventBus.emit(CounterIncrementedEvent(newValue));
+      FKappaEventBus.emit(CounterIncrementedEvent(newValue));
       return newValue;
     });
   }

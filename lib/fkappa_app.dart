@@ -14,14 +14,14 @@ import 'core/architecture/kappa_middleware.dart';
 import 'core/architecture/kappa_env.dart';
 import 'core/network/kappa_dio.dart';
 
-/// The main entry point for a Kappa application.
-class KappaApp extends StatefulWidget {
-  final List<KappaModule> modules;
+/// The main entry point for a FKappa application.
+class FKappaApp extends StatefulWidget {
+  final List<FKappaModule> modules;
   final String initialRoute;
-  final List<KappaMiddleware> globalMiddlewares;
+  final List<FKappaMiddleware> globalMiddlewares;
   final Storage? storage;
   final String? baseUrl;
-  final KappaEnv? env; // Added for flavor support
+  final FKappaEnv? env; // Added for flavor support
   final List<Interceptor>? interceptors;
   final ThemeData? theme;
   final ThemeData? darkTheme;
@@ -29,7 +29,7 @@ class KappaApp extends StatefulWidget {
   final String title;
   final bool debugShowCheckedModeBanner;
 
-  const KappaApp({
+  const FKappaApp({
     super.key,
     required this.modules,
     required this.initialRoute,
@@ -41,15 +41,15 @@ class KappaApp extends StatefulWidget {
     this.theme,
     this.darkTheme,
     this.themeMode = ThemeMode.system,
-    this.title = 'Kappa App',
+    this.title = 'fkappa App',
     this.debugShowCheckedModeBanner = true,
   });
 
   @override
-  State<KappaApp> createState() => _KappaAppState();
+  State<FKappaApp> createState() => _FKappaAppState();
 }
 
-class _KappaAppState extends State<KappaApp> {
+class _FKappaAppState extends State<FKappaApp> {
   late final GoRouter _router;
   bool _isInitialized = false;
 
@@ -75,20 +75,20 @@ class _KappaAppState extends State<KappaApp> {
         );
       }
 
-      // 2. Initialize Global Networking (KappaDio)
+      // 2. Initialize Global Networking (FKappaDio)
       final effectiveBaseUrl = widget.env?.baseUrl ?? widget.baseUrl;
-      if (effectiveBaseUrl != null && !sl.isRegistered<KappaDio>()) {
-        if (kDebugMode) print('Kappa: Initializing Global Networking with baseUrl: $effectiveBaseUrl (Flavor: ${widget.env?.flavor})');
-        final kappaDio = KappaDio(
+      if (effectiveBaseUrl != null && !sl.isRegistered<FKappaDio>()) {
+        if (kDebugMode) print('fkappa: Initializing Global Networking with baseUrl: $effectiveBaseUrl (Flavor: ${widget.env?.flavor})');
+        final kappaDio = FKappaDio(
           baseUrl: effectiveBaseUrl,
           interceptors: widget.interceptors,
         );
-        sl.registerSingleton<KappaDio>(kappaDio);
+        sl.registerSingleton<FKappaDio>(kappaDio);
       }
 
       // 3. Register Env into DI for global access
-      if (widget.env != null && !sl.isRegistered<KappaEnv>()) {
-        sl.registerSingleton<KappaEnv>(widget.env!);
+      if (widget.env != null && !sl.isRegistered<FKappaEnv>()) {
+        sl.registerSingleton<FKappaEnv>(widget.env!);
       }
 
       // 3. Validate Modules and Register Dependencies (Skip Lazy Modules)
@@ -100,7 +100,7 @@ class _KappaAppState extends State<KappaApp> {
         moduleNames.add(module.name);
         
         if (!module.isLazy) {
-          if (kDebugMode) print('Kappa: Registering dependencies for [${module.name}]');
+          if (kDebugMode) print('fkappa: Registering dependencies for [${module.name}]');
           module.registerDependencies(sl);
         }
       }
@@ -108,7 +108,7 @@ class _KappaAppState extends State<KappaApp> {
       // 4. Initialize modules (Skip Lazy Modules)
       for (final module in widget.modules) {
         if (!module.isLazy) {
-          if (kDebugMode) print('Kappa: Initializing module [${module.name}]');
+          if (kDebugMode) print('fkappa: Initializing module [${module.name}]');
           await module.init().timeout(const Duration(seconds: 10));
         }
       }
@@ -134,7 +134,7 @@ class _KappaAppState extends State<KappaApp> {
       );
 
       if (kDebugMode) {
-        print('Kappa Framework initialized successfully in ${stopwatch.elapsedMilliseconds}ms');
+        print('fkappa Framework initialized successfully in ${stopwatch.elapsedMilliseconds}ms');
       }
 
       if (mounted) {
@@ -144,7 +144,7 @@ class _KappaAppState extends State<KappaApp> {
       }
     } catch (e, stack) {
       if (kDebugMode) {
-        print('Kappa Initialization Error: $e');
+        print('fkappa Initialization Error: $e');
         print(stack);
       }
       // You could show a Global Error Screen here if needed
@@ -173,8 +173,8 @@ class _KappaAppState extends State<KappaApp> {
       routerConfig: _router,
       debugShowCheckedModeBanner: widget.debugShowCheckedModeBanner,
       builder: (context, child) => ResponsiveBreakpoints.builder(
-        child: KappaLoadingOverlay(child: child!),
-        breakpoints: KappaResponsive.breakpoints,
+        child: FKappaLoadingOverlay(child: child!),
+        breakpoints: FKappaResponsive.breakpoints,
       ),
     );
   }

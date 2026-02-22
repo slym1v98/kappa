@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'dart:io';
 
-class KappaAppBar extends StatelessWidget implements PreferredSizeWidget {
+class FKappaAppBar extends StatelessWidget implements PreferredSizeWidget {
   final Widget title;
   final List<Widget>? actions;
   final Widget? leading;
   final bool centerTitle;
 
-  const KappaAppBar({
+  const FKappaAppBar({
     super.key,
     required this.title,
     this.actions,

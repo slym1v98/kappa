@@ -1,0 +1,18 @@
+import flutter.plugin.common.MethodCall
+import io.flutter.plugin.common.MethodChannel
+import net.flownest.fkappa.FKappaPlugin
+import org.junit.Test
+import org.mockito.Mockito
+
+internal class FKappaPluginTest {
+    @Test
+    fun onMethodCall_getPlatformVersion_returnsExpectedValue() {
+        val plugin = FKappaPlugin()
+
+        val call = MethodCall("getPlatformVersion", null)
+        val mockResult: MethodChannel.Result = Mockito.mock(MethodChannel.Result::class.java)
+        plugin.onMethodCall(call, mockResult)
+
+        Mockito.verify(mockResult).success("Android " + android.os.Build.VERSION.RELEASE)
+    }
+}

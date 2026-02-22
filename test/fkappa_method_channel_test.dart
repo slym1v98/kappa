@@ -1,12 +1,12 @@
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:fkappa/kappa_method_channel.dart';
+import 'package:fkappa/fkappa_method_channel.dart';
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
-  MethodChannelKappa platform = MethodChannelKappa();
-  const MethodChannel channel = MethodChannel('kappa');
+  MethodChannelFKappa platform = MethodChannelFKappa();
+  const MethodChannel channel = MethodChannel('fkappa');
 
   setUp(() {
     TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger.setMockMethodCallHandler(

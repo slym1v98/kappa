@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:fkappa/kappa.dart' hide State;
+import 'package:fkappa/fkappa.dart' hide State;
 
-class GalleryPage extends StatefulWidget with KappaSpacing, KappaResponsive {
+class GalleryPage extends StatefulWidget with FKappaSpacing, FKappaResponsive {
   const GalleryPage({super.key});
 
   @override
@@ -16,52 +16,52 @@ class _GalleryPageState extends State<GalleryPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const KappaAppBar(
-        title: Text('Kappa UI Gallery'),
+      appBar: const FKappaAppBar(
+        title: Text('fkappa UI Gallery'),
       ),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.all(KappaSpacing.medium),
+        padding: const EdgeInsets.all(FKappaSpacing.medium),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const Text('Smart Components', style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
-            KappaSpacing.mediumV,
+            FKappaSpacing.mediumV,
             
             // Buttons
             const Text('Buttons', style: TextStyle(fontWeight: FontWeight.bold)),
-            KappaSpacing.smallV,
+            FKappaSpacing.smallV,
             Row(
               children: [
-                KappaButton(label: 'Active', onPressed: () {}),
-                KappaSpacing.smallH,
-                KappaButton(label: 'Loading', isLoading: true, onPressed: () {}),
+                FKappaButton(label: 'Active', onPressed: () {}),
+                FKappaSpacing.smallH,
+                FKappaButton(label: 'Loading', isLoading: true, onPressed: () {}),
               ],
             ),
             
-            KappaSpacing.mediumV,
+            FKappaSpacing.mediumV,
             
             // TextFields
             const Text('Inputs', style: TextStyle(fontWeight: FontWeight.bold)),
-            KappaSpacing.smallV,
-            KappaTextField(
+            FKappaSpacing.smallV,
+            FKappaTextField(
               label: 'Username',
               placeholder: 'Enter your name',
               controller: _textController,
             ),
             
-            KappaSpacing.mediumV,
+            FKappaSpacing.mediumV,
             
             // Adaptive Controls
             const Text('Adaptive Controls', style: TextStyle(fontWeight: FontWeight.bold)),
-            KappaSpacing.smallV,
-            KappaCard(
+            FKappaSpacing.smallV,
+            FKappaCard(
               child: Column(
                 children: [
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       const Text('Notification Switch'),
-                      KappaSwitch(
+                      FKappaSwitch(
                         value: _switchValue,
                         onChanged: (val) => setState(() => _switchValue = val),
                       ),
@@ -72,7 +72,7 @@ class _GalleryPageState extends State<GalleryPage> {
                     children: [
                       const Icon(Icons.volume_down),
                       Expanded(
-                        child: KappaSlider(
+                        child: FKappaSlider(
                           value: _sliderValue,
                           onChanged: (val) => setState(() => _sliderValue = val),
                         ),
@@ -84,40 +84,40 @@ class _GalleryPageState extends State<GalleryPage> {
               ),
             ),
             
-            KappaSpacing.mediumV,
+            FKappaSpacing.mediumV,
             
             // List Tiles
             const Text('List Tiles', style: TextStyle(fontWeight: FontWeight.bold)),
-            KappaSpacing.smallV,
-            KappaListTile(
+            FKappaSpacing.smallV,
+            FKappaListTile(
               leading: const Icon(Icons.person),
               title: const Text('Profile Settings'),
               subtitle: const Text('Manage your account info'),
               showChevron: true,
               onTap: () {
-                KappaDialog.show(
+                FKappaDialog.show(
                   context: context,
                   title: 'Profile',
-                  message: 'This is a Kappa native dialog!',
+                  message: 'This is a FKappa native dialog!',
                 );
               },
             ),
             
-            KappaSpacing.mediumV,
+            FKappaSpacing.mediumV,
             
             // Loading
             const Text('Loading Indicators', style: TextStyle(fontWeight: FontWeight.bold)),
-            KappaSpacing.smallV,
+            FKappaSpacing.smallV,
             const Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                KappaLoadingIndicator(),
-                KappaLoadingIndicator(radius: 20),
-                KappaLoadingIndicator(color: Colors.red),
+                FKappaLoadingIndicator(),
+                FKappaLoadingIndicator(radius: 20),
+                FKappaLoadingIndicator(color: Colors.red),
               ],
             ),
 
-            KappaSpacing.extraLargeV,
+            FKappaSpacing.extraLargeV,
             Center(
               child: TextButton(
                 onPressed: () => context.go('/settings'),
@@ -127,7 +127,7 @@ class _GalleryPageState extends State<GalleryPage> {
           ],
         ),
       ),
-      bottomNavigationBar: KappaBottomNavigationBar(
+      bottomNavigationBar: FKappaBottomNavigationBar(
         currentIndex: 0,
         onTap: (index) {},
         items: const [

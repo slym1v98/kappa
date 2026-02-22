@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:fkappa/kappa.dart';
+import 'package:fkappa/fkappa.dart';
 import 'package:kappa_example/shared/events/counter_events.dart';
 import 'package:kappa_example/modules/history/presentation/bloc/history_bloc.dart';
 
@@ -23,7 +23,7 @@ void main() {
 
       // 2. Act: Emit an event to the global bus (simulating CounterModule action)
       final event = CounterIncrementedEvent(10);
-      KappaEventBus.emit(event);
+      FKappaEventBus.emit(event);
 
       // 3. Assert: Wait for HistoryBloc to process the event
       // Since it's reactive, we wait for the next state
@@ -36,9 +36,9 @@ void main() {
 
     test('HistoryBloc should handle multiple events correctly', () async {
       // Act
-      KappaEventBus.emit(CounterIncrementedEvent(1));
-      KappaEventBus.emit(CounterIncrementedEvent(2));
-      KappaEventBus.emit(CounterIncrementedEvent(3));
+      FKappaEventBus.emit(CounterIncrementedEvent(1));
+      FKappaEventBus.emit(CounterIncrementedEvent(2));
+      FKappaEventBus.emit(CounterIncrementedEvent(3));
 
       await Future.delayed(const Duration(milliseconds: 100));
 

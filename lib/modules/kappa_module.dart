@@ -1,11 +1,11 @@
 import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
 
-/// The contract that every feature module in a Kappa application must implement.
+/// The contract that every feature module in a FKappa application must implement.
 ///
 /// A Module encapsulates a specific feature set (e.g., Auth, Cart, Product).
 /// It manages its own Routes, Dependency Injection, and Initialization logic.
-abstract class KappaModule {
+abstract class FKappaModule {
   /// The unique name of the module.
   String get name;
 

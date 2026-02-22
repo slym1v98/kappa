@@ -1,7 +1,7 @@
-import 'package:fkappa/kappa.dart';
+import 'package:fkappa/fkappa.dart';
 import 'presentation/pages/login_page.dart';
 
-class AuthModule extends KappaModule {
+class AuthModule extends FKappaModule {
   @override
   String get name => 'Auth';
 

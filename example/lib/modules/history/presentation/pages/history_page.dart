@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:fkappa/kappa.dart';
+import 'package:fkappa/fkappa.dart';
 import '../bloc/history_bloc.dart';
 
-class HistoryPage extends StatelessWidget with KappaSpacing {
+class HistoryPage extends StatelessWidget with FKappaSpacing {
   const HistoryPage({super.key});
 
   @override
@@ -24,7 +24,7 @@ class HistoryPage extends StatelessWidget with KappaSpacing {
           }
 
           return ListView.separated(
-            padding: const EdgeInsets.all(KappaSpacing.medium),
+            padding: const EdgeInsets.all(FKappaSpacing.medium),
             itemCount: state.logs.length,
             separatorBuilder: (_, __) => const Divider(),
             itemBuilder: (context, index) {

@@ -1,4 +1,4 @@
-import 'package:fkappa/kappa.dart';
+import 'package:fkappa/fkappa.dart';
 
 /// The contract for data access.
 /// Domain layer only knows about this interface.

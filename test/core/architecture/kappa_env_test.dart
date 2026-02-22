@@ -1,11 +1,11 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:fkappa/kappa.dart';
+import 'package:fkappa/fkappa.dart';
 
 void main() {
-  group('KappaEnv Tests', () {
+  group('FKappaEnv Tests', () {
     test('Should identify DEV environment correctly', () {
-      const env = KappaEnv(
-        flavor: KappaFlavor.dev,
+      const env = FKappaEnv(
+        flavor: FKappaFlavor.dev,
         baseUrl: 'https://dev.api.com',
       );
 
@@ -15,8 +15,8 @@ void main() {
     });
 
     test('Should identify PROD environment correctly', () {
-      const env = KappaEnv(
-        flavor: KappaFlavor.prod,
+      const env = FKappaEnv(
+        flavor: FKappaFlavor.prod,
         baseUrl: 'https://prod.api.com',
       );
 
@@ -25,8 +25,8 @@ void main() {
     });
 
     test('Should store extra configuration correctly', () {
-      const env = KappaEnv(
-        flavor: KappaFlavor.staging,
+      const env = FKappaEnv(
+        flavor: FKappaFlavor.staging,
         baseUrl: 'https://staging.api.com',
         extra: {'debug_logs': true, 'retry_count': 3},
       );

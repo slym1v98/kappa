@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:fkappa/kappa.dart';
+import 'package:fkappa/fkappa.dart';
 import '../bloc/counter_bloc.dart';
 
-class CounterPage extends StatelessWidget with KappaSpacing {
+class CounterPage extends StatelessWidget with FKappaSpacing {
   const CounterPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Kappa Counter')),
+      appBar: AppBar(title: const Text('fkappa Counter')),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -17,7 +17,7 @@ class CounterPage extends StatelessWidget with KappaSpacing {
               'Current Counter Value:',
               style: TextStyle(fontSize: 18),
             ),
-            KappaSpacing.mediumV,
+            FKappaSpacing.mediumV,
             BlocBuilder<CounterBloc, CounterState>(
               builder: (context, state) {
                 if (state is CounterLoading) {
@@ -33,8 +33,8 @@ class CounterPage extends StatelessWidget with KappaSpacing {
                 return const Text('0', style: TextStyle(fontSize: 48));
               },
             ),
-            KappaSpacing.largeV,
-            KappaButton(
+            FKappaSpacing.largeV,
+            FKappaButton(
               label: 'Increment Counter',
               onPressed: () {
                 final bloc = context.read<CounterBloc>();
@@ -44,7 +44,7 @@ class CounterPage extends StatelessWidget with KappaSpacing {
                 bloc.add(IncrementEvent(currentValue));
               },
             ),
-            KappaSpacing.mediumV,
+            FKappaSpacing.mediumV,
             TextButton(
               onPressed: () => context.push('/history'),
               child: const Text('View Global History (Event Bus Demo)'),

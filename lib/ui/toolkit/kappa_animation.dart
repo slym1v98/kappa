@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 
-/// Standard durations and curves for Kappa animations.
-class KappaAnimationConstants {
+/// Standard durations and curves for FKappa animations.
+class FKappaAnimationConstants {
   static const Duration fast = Duration(milliseconds: 200);
   static const Duration medium = Duration(milliseconds: 400);
   static const Duration slow = Duration(milliseconds: 800);
@@ -11,33 +11,33 @@ class KappaAnimationConstants {
   static const Curve decelerateEasing = Curves.decelerate;
 }
 
-/// Common animation types supported by Kappa.
-enum KappaAnimationType { fade, scale, slideInUp, slideInDown, slideInLeft, slideInRight }
+/// Common animation types supported by FKappa.
+enum FKappaAnimationType { fade, scale, slideInUp, slideInDown, slideInLeft, slideInRight }
 
 /// A declarative wrapper for adding animations to any widget.
-class KappaAnimatedView extends StatefulWidget {
+class FKappaAnimatedView extends StatefulWidget {
   final Widget child;
-  final KappaAnimationType type;
+  final FKappaAnimationType type;
   final Duration duration;
   final Duration delay;
   final double offset; // For slide animations
   final bool animate;
 
-  const KappaAnimatedView({
+  const FKappaAnimatedView({
     super.key,
     required this.child,
-    this.type = KappaAnimationType.fade,
-    this.duration = KappaAnimationConstants.medium,
+    this.type = FKappaAnimationType.fade,
+    this.duration = FKappaAnimationConstants.medium,
     this.delay = Duration.zero,
     this.offset = 30.0,
     this.animate = true,
   });
 
   @override
-  State<KappaAnimatedView> createState() => _KappaAnimatedViewState();
+  State<FKappaAnimatedView> createState() => _fkappaAnimatedViewState();
 }
 
-class _KappaAnimatedViewState extends State<KappaAnimatedView> with SingleTickerProviderStateMixin {
+class _fkappaAnimatedViewState extends State<FKappaAnimatedView> with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> _opacity;
   late Animation<double> _scale;
@@ -52,12 +52,12 @@ class _KappaAnimatedViewState extends State<KappaAnimatedView> with SingleTicker
       CurvedAnimation(parent: _controller, curve: const Interval(0.0, 0.65, curve: Curves.easeIn)),
     );
 
-    _scale = Tween<double>(begin: widget.type == KappaAnimationType.scale ? 0.8 : 1.0, end: 1.0).animate(
-      CurvedAnimation(parent: _controller, curve: KappaAnimationConstants.emphasizeEasing),
+    _scale = Tween<double>(begin: widget.type == FKappaAnimationType.scale ? 0.8 : 1.0, end: 1.0).animate(
+      CurvedAnimation(parent: _controller, curve: FKappaAnimationConstants.emphasizeEasing),
     );
 
     _slide = _getSlideTween().animate(
-      CurvedAnimation(parent: _controller, curve: KappaAnimationConstants.decelerateEasing),
+      CurvedAnimation(parent: _controller, curve: FKappaAnimationConstants.decelerateEasing),
     );
 
     if (widget.animate) {
@@ -69,13 +69,13 @@ class _KappaAnimatedViewState extends State<KappaAnimatedView> with SingleTicker
 
   Tween<Offset> _getSlideTween() {
     switch (widget.type) {
-      case KappaAnimationType.slideInUp:
+      case FKappaAnimationType.slideInUp:
         return Tween<Offset>(begin: Offset(0, widget.offset), end: Offset.zero);
-      case KappaAnimationType.slideInDown:
+      case FKappaAnimationType.slideInDown:
         return Tween<Offset>(begin: Offset(0, -widget.offset), end: Offset.zero);
-      case KappaAnimationType.slideInLeft:
+      case FKappaAnimationType.slideInLeft:
         return Tween<Offset>(begin: Offset(-widget.offset, 0), end: Offset.zero);
-      case KappaAnimationType.slideInRight:
+      case FKappaAnimationType.slideInRight:
         return Tween<Offset>(begin: Offset(widget.offset, 0), end: Offset.zero);
       default:
         return Tween<Offset>(begin: Offset.zero, end: Offset.zero);
@@ -83,7 +83,7 @@ class _KappaAnimatedViewState extends State<KappaAnimatedView> with SingleTicker
   }
 
   @override
-  void didUpdateWidget(KappaAnimatedView oldWidget) {
+  void didUpdateWidget(FKappaAnimatedView oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (widget.animate && !oldWidget.animate) {
       _controller.forward();

@@ -6,13 +6,13 @@ import 'dart:io';
 ///
 /// On Android: Renders a Material 3 [Card] (Elevated or Filled).
 /// On iOS: Renders a [Container] with platform-appropriate decoration.
-class KappaCard extends StatelessWidget {
+class FKappaCard extends StatelessWidget {
   final Widget child;
   final EdgeInsetsGeometry padding;
   final VoidCallback? onTap;
   final Color? backgroundColor;
 
-  const KappaCard({
+  const FKappaCard({
     super.key,
     required this.child,
     this.padding = const EdgeInsets.all(16.0),

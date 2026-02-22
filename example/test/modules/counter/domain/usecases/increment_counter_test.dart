@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:fkappa/kappa.dart';
+import 'package:fkappa/fkappa.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:kappa_example/modules/counter/domain/repositories/i_counter_repository.dart';
 import 'package:kappa_example/modules/counter/domain/usecases/increment_counter.dart';
@@ -25,7 +25,7 @@ void main() {
           .thenAnswer((_) async => const Right(expectedValue));
 
       // Assert Event Bus
-      final eventBusStream = KappaEventBus.on<CounterIncrementedEvent>();
+      final eventBusStream = FKappaEventBus.on<CounterIncrementedEvent>();
       final expectation = expectLater(
         eventBusStream,
         emits(predicate<CounterIncrementedEvent>((e) => e.newValue == expectedValue)),

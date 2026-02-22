@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'dart:io';
 
-class KappaSwitch extends StatelessWidget {
+class FKappaSwitch extends StatelessWidget {
   final bool value;
   final ValueChanged<bool>? onChanged;
   final Color? activeColor;
 
-  const KappaSwitch({
+  const FKappaSwitch({
     super.key,
     required this.value,
     required this.onChanged,

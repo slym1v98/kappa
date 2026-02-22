@@ -6,7 +6,7 @@ Tài liệu này hướng dẫn cách bảo mật mã nguồn và cấu hình k�
 
 ## 1. Code Obfuscation (Làm rối mã)
 
-Kappa tự động hỗ trợ làm rối mã khi build bản `prod` thông qua script `./scripts/build_flavors.sh`.
+fkappa tự động hỗ trợ làm rối mã khi build bản `prod` thông qua script `./scripts/build_flavors.sh`.
 Lệnh build thực tế sẽ thêm các flag:
 - `--obfuscate`: Làm rối tên hàm và biến.
 - `--split-debug-info`: Tách thông tin debug ra khỏi file APK/IPA để giảm kích thước và bảo mật.
@@ -87,7 +87,7 @@ Trên iOS, việc ký ứng dụng được quản lý thông qua **Xcode Build 
 
 ## 4. Bảo mật dữ liệu nhạy cảm (Secrets)
 
-Kappa khuyến khích sử dụng `KappaEnv` kết hợp với lệnh build để truyền secrets qua `--dart-define`:
+fkappa khuyến khích sử dụng `FKappaEnv` kết hợp với lệnh build để truyền secrets qua `--dart-define`:
 
 Ví dụ khi chạy:
 `flutter run --dart-define=API_KEY=12345`

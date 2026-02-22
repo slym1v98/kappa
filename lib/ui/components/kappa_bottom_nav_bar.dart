@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'dart:io';
 
-class KappaBottomNavigationBar extends StatelessWidget {
+class FKappaBottomNavigationBar extends StatelessWidget {
   final int currentIndex;
   final ValueChanged<int> onTap;
   final List<BottomNavigationBarItem> items;
 
-  const KappaBottomNavigationBar({
+  const FKappaBottomNavigationBar({
     super.key,
     required this.currentIndex,
     required this.onTap,

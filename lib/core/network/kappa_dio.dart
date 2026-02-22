@@ -3,12 +3,12 @@ import 'package:dio_cache_interceptor/dio_cache_interceptor.dart';
 import 'package:fpdart/fpdart.dart';
 import '../error/failure.dart';
 
-/// A standardized Networking Client for Kappa with Offline-First support.
-class KappaDio {
+/// A standardized Networking Client for FKappa with Offline-First support.
+class FKappaDio {
   late final Dio _dio;
   final CacheOptions? cacheOptions;
 
-  KappaDio({
+  FKappaDio({
     required String baseUrl,
     Map<String, dynamic>? headers,
     List<Interceptor>? interceptors,

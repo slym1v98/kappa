@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'dart:io';
 
-class KappaLoadingIndicator extends StatelessWidget {
+class FKappaLoadingIndicator extends StatelessWidget {
   final Color? color;
   final double radius;
 
-  const KappaLoadingIndicator({
+  const FKappaLoadingIndicator({
     super.key,
     this.color,
     this.radius = 12.0,

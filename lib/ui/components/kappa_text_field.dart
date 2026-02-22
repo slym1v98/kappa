@@ -6,7 +6,7 @@ import 'dart:io';
 ///
 /// On Android: Renders a Material 3 [TextField].
 /// On iOS: Renders a [CupertinoTextField].
-class KappaTextField extends StatelessWidget {
+class FKappaTextField extends StatelessWidget {
   final TextEditingController? controller;
   final String? placeholder;
   final String? label;
@@ -15,7 +15,7 @@ class KappaTextField extends StatelessWidget {
   final ValueChanged<String>? onChanged;
   final String? errorText;
 
-  const KappaTextField({
+  const FKappaTextField({
     super.key,
     this.controller,
     this.placeholder,

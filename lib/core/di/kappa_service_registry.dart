@@ -2,7 +2,7 @@ import 'package:get_it/get_it.dart';
 
 /// A central registry for public module services.
 /// Use this to expose and look up shared services (Request-Response).
-class KappaServiceRegistry {
+class FKappaServiceRegistry {
   static final GetIt _sl = GetIt.instance;
 
   /// Register a service implementation for a given interface.

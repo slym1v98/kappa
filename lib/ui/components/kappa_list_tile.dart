@@ -6,7 +6,7 @@ import 'dart:io';
 ///
 /// On Android: Renders a Material 3 [ListTile].
 /// On iOS: Renders a [CupertinoListTile] or custom row.
-class KappaListTile extends StatelessWidget {
+class FKappaListTile extends StatelessWidget {
   final Widget? leading;
   final Widget title;
   final Widget? subtitle;
@@ -14,7 +14,7 @@ class KappaListTile extends StatelessWidget {
   final VoidCallback? onTap;
   final bool showChevron;
 
-  const KappaListTile({
+  const FKappaListTile({
     super.key,
     required this.title,
     this.subtitle,

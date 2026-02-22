@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'kappa_loading_indicator.dart';
 
 /// Controller to manage global loading state.
-/// Use [KappaLoading.show()] and [KappaLoading.hide()] to control the overlay.
-class KappaLoading {
+/// Use [FKappaLoading.show()] and [FKappaLoading.hide()] to control the overlay.
+class FKappaLoading {
   static final ValueNotifier<bool> _isLoading = ValueNotifier<bool>(false);
 
   static ValueNotifier<bool> get state => _isLoading;
@@ -16,10 +16,10 @@ class KappaLoading {
 }
 
 /// A widget that overlays a loading indicator over its child based on global state.
-class KappaLoadingOverlay extends StatelessWidget {
+class FKappaLoadingOverlay extends StatelessWidget {
   final Widget child;
 
-  const KappaLoadingOverlay({super.key, required this.child});
+  const FKappaLoadingOverlay({super.key, required this.child});
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +29,7 @@ class KappaLoadingOverlay extends StatelessWidget {
         children: [
           child,
           ValueListenableBuilder<bool>(
-            valueListenable: KappaLoading.state,
+            valueListenable: FKappaLoading.state,
             builder: (context, isLoading, _) {
               if (!isLoading) return const SizedBox.shrink();
 
@@ -52,7 +52,7 @@ class KappaLoadingOverlay extends StatelessWidget {
                           )
                         ]
                       ),
-                      child: const KappaLoadingIndicator(radius: 18),
+                      child: const FKappaLoadingIndicator(radius: 18),
                     ),
                   ),
                 ),

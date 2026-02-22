@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'dart:io';
 
 /// A utility for showing adaptive dialogs.
-class KappaDialog {
+class FKappaDialog {
   static Future<void> show({
     required BuildContext context,
     required String title,

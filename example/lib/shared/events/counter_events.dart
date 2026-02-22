@@ -1,8 +1,8 @@
-import 'package:fkappa/kappa.dart';
+import 'package:fkappa/fkappa.dart';
 
 /// Shared event for counter changes.
 /// All modules can publish or subscribe to this.
-class CounterIncrementedEvent extends KappaEvent {
+class CounterIncrementedEvent extends FKappaEvent {
   final int newValue;
   final DateTime timestamp;
 

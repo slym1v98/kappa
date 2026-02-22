@@ -1,24 +1,24 @@
 import 'dart:async';
 
-/// Base class for all events in the Kappa framework.
+/// Base class for all events in the FKappa framework.
 /// Extend this class to create custom events (e.g., UserLoggedInEvent).
-abstract class KappaEvent {
-  const KappaEvent();
+abstract class FKappaEvent {
+  const FKappaEvent();
 }
 
 /// A simple, reactive Event Bus for inter-module communication.
 /// Modules publish events here, and other modules subscribe to react.
-class KappaEventBus {
-  static final StreamController<KappaEvent> _controller =
-      StreamController<KappaEvent>.broadcast();
+class FKappaEventBus {
+  static final StreamController<FKappaEvent> _controller =
+      StreamController<FKappaEvent>.broadcast();
 
   /// Publish an event to all subscribers.
-  static void emit(KappaEvent event) {
+  static void emit(FKappaEvent event) {
     _controller.add(event);
   }
 
   /// Listen for a specific type of event.
-  static Stream<T> on<T extends KappaEvent>() {
+  static Stream<T> on<T extends FKappaEvent>() {
     return _controller.stream.where((event) => event is T).cast<T>();
   }
 

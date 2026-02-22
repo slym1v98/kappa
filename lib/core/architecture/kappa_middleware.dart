@@ -2,10 +2,10 @@ import 'dart:async';
 import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
 
-/// The contract for all middlewares in Kappa.
+/// The contract for all middlewares in FKappa.
 /// A middleware can intercept a navigation and decide to redirect or allow it.
-abstract class KappaMiddleware {
-  const KappaMiddleware();
+abstract class FKappaMiddleware {
+  const FKappaMiddleware();
 
   /// Logic to decide if the navigation should be redirected.
   /// Returns a path to redirect to, or null to allow navigation.
@@ -13,7 +13,7 @@ abstract class KappaMiddleware {
 }
 
 /// Protects routes that require a logged-in user.
-class AuthMiddleware extends KappaMiddleware {
+class AuthMiddleware extends FKappaMiddleware {
   final bool Function() isAuthenticated;
   final String loginPath;
 
@@ -32,7 +32,7 @@ class AuthMiddleware extends KappaMiddleware {
 }
 
 /// Protects routes that should only be accessible to guests (e.g., Login, Register).
-class GuestMiddleware extends KappaMiddleware {
+class GuestMiddleware extends FKappaMiddleware {
   final bool Function() isAuthenticated;
   final String homePath;
 

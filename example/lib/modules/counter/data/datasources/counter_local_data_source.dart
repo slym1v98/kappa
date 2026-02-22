@@ -1,4 +1,4 @@
-import 'package:fkappa/kappa.dart';
+import 'package:fkappa/fkappa.dart';
 
 /// Low-level data source (could be SharedPreferences or API).
 class CounterLocalDataSource extends BaseDataSource {

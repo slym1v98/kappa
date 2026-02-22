@@ -1,4 +1,4 @@
-import 'package:fkappa/kappa.dart';
+import 'package:fkappa/fkappa.dart';
 import 'package:equatable/equatable.dart';
 import '../../domain/usecases/increment_counter.dart';
 

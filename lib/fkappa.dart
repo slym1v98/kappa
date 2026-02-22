@@ -1,5 +1,5 @@
 // Core Framework
-export 'kappa_app.dart';
+export 'fkappa_app.dart';
 
 // Architecture Base Classes
 export 'core/architecture/use_case.dart';

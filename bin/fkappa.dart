@@ -92,7 +92,7 @@ abstract class I${className}RemoteDataSource extends BaseDataSource {
 }
 
 class ${className}RemoteDataSourceImpl extends I${className}RemoteDataSource {
-  final KappaDio dio;
+  final FKappaDio dio;
 
   ${className}RemoteDataSourceImpl(this.dio);
 
@@ -113,7 +113,7 @@ void _generateWidget(String module, String name) {
 import 'package:flutter/material.dart';
 import 'package:fkappa/kappa.dart';
 
-class $className extends StatelessWidget with KappaSpacing {
+class $className extends StatelessWidget with fkappaSpacing {
   const $className({super.key});
 
   @override
@@ -151,7 +151,7 @@ void _generateModule(String name) {
 import 'package:fkappa/kappa.dart';
 import 'package:flutter/widgets.dart';
 
-class ${className}Module extends KappaModule {
+class ${className}Module extends FKappaModule {
   @override
   String get name => '$className';
 
@@ -334,13 +334,13 @@ void _generatePage(String module, String name) {
 import 'package:flutter/material.dart';
 import 'package:fkappa/kappa.dart';
 
-class ${className}Page extends StatelessWidget with KappaSpacing {
+class ${className}Page extends StatelessWidget with fkappaSpacing {
   const ${className}Page({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: KappaAppBar(title: Text('$className')),
+      appBar: FKappaAppBar(title: Text('$className')),
       body: const Center(child: Text('$className Page')),
     );
   }

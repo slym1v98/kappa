@@ -4,7 +4,7 @@ Hướng dẫn chi tiết cách khai thác tối đa sức mạnh của fkappa F
 
 ---
 
-## 1. Công cụ Kappa CLI ⚡
+## 1. Công cụ fkappa CLI ⚡
 
 Sử dụng CLI để duy trì cấu trúc code đồng nhất và tự động sinh test.
 
@@ -14,8 +14,8 @@ Sử dụng CLI để duy trì cấu trúc code đồng nhất và tự động 
 | `kappa generate usecase <mod> <name>`    | Tạo UseCase kèm file Unit Test mẫu.                      |
 | `kappa generate bloc <mod> <name>`       | Tạo BLoC (Event/State) kèm BLoC Test mẫu.                |
 | `kappa generate repository <mod> <name>` | Tạo Repository Interface và Implementation kèm test.     |
-| `kappa generate datasource <mod> <name>` | Tạo Remote DataSource tích hợp sẵn `KappaDio`.           |
-| `kappa generate page <mod> <name>`       | Tạo giao diện trang mới với `KappaAppBar`.               |
+| `kappa generate datasource <mod> <name>` | Tạo Remote DataSource tích hợp sẵn `FKappaDio`.           |
+| `kappa generate page <mod> <name>`       | Tạo giao diện trang mới với `FKappaAppBar`.               |
 | `kappa generate widget <mod> <name>`     | Tạo widget nhỏ tái sử dụng trong module.                 |
 
 ---
@@ -26,20 +26,20 @@ Sử dụng CLI để duy trì cấu trúc code đồng nhất và tự động 
 Dùng khi Module A muốn phát thông tin cho "thế giới bên ngoài".
 ```dart
 // Phát tin
-KappaEventBus.emit(UserLoggedOutEvent());
+FKappaEventBus.emit(UserLoggedOutEvent());
 
 // Nhận tin (ở Module khác)
-KappaEventBus.on<UserLoggedOutEvent>().listen((_) => clearLocalCache());
+FKappaEventBus.on<UserLoggedOutEvent>().listen((_) => clearLocalCache());
 ```
 
 ### B. Service Registry (Giao tiếp trực tiếp)
 Dùng khi cần gọi hàm và lấy kết quả ngay lập tức (Request-Response).
 ```dart
 // Module User xuất bản Service
-KappaServiceRegistry.register<IAuthService>(AuthServiceImpl());
+FKappaServiceRegistry.register<IAuthService>(AuthServiceImpl());
 
 // Module Cart sử dụng Service
-final auth = KappaServiceRegistry.get<IAuthService>();
+final auth = FKappaServiceRegistry.get<IAuthService>();
 print(auth.getUserName());
 ```
 
@@ -48,15 +48,15 @@ print(auth.getUserName());
 ## 3. Hệ thống UI & Animation 🎬
 
 ### Adaptive UI Kit
-Các components của Kappa tự động thay đổi theo OS:
-- `KappaButton`, `KappaTextField`, `KappaCard`, `KappaListTile`.
-- `KappaAppBar`, `KappaBottomNavigationBar`, `KappaLoadingIndicator`.
+Các components của fkappa tự động thay đổi theo OS:
+- `FKappaButton`, `fkappaTextField`, `FKappaCard`, `fkappaListTile`.
+- `FKappaAppBar`, `fkappaBottomNavigationBar`, `FKappaLoadingIndicator`.
 
 ### Animation & Transitions
 Sử dụng hiệu ứng khai báo:
 ```dart
-KappaAnimatedView(
-  type: KappaAnimationType.slideInUp,
+fkappaAnimatedView(
+  type: FKappaAnimationType.slideInUp,
   delay: Duration(milliseconds: 200),
   child: MyCard(),
 )
@@ -65,7 +65,7 @@ Cấu hình chuyển trang trong GoRouter:
 ```dart
 GoRoute(
   path: '/settings',
-  pageBuilder: (context, state) => KappaPageTransition.zoom(child: SettingsPage(), key: state.pageKey),
+  pageBuilder: (context, state) => FKappaPageTransition.zoom(child: SettingsPage(), key: state.pageKey),
 )
 ```
 
@@ -73,14 +73,14 @@ GoRoute(
 
 ## 4. Networking & Offline-First 🌐
 
-`KappaDio` tự động quản lý cache. Bạn có thể cấu hình tại `KappaApp`:
+`FKappaDio` tự động quản lý cache. Bạn có thể cấu hình tại `FKappaApp`:
 ```dart
-KappaApp(
+FKappaApp(
   baseUrl: 'https://api.example.com',
   interceptors: [ /* interceptors của bạn */ ],
 )
 ```
-**Chiến lược:** Nếu server lỗi hoặc mất mạng, `KappaDio` sẽ tự động lục tìm trong cache để trả về dữ liệu gần nhất cho người dùng.
+**Chiến lược:** Nếu server lỗi hoặc mất mạng, `FKappaDio` sẽ tự động lục tìm trong cache để trả về dữ liệu gần nhất cho người dùng.
 
 ---
 
@@ -96,7 +96,7 @@ Sử dụng script `./scripts/build_flavors.sh` để chạy ứng dụng:
 
 Hiển thị loading toàn ứng dụng (che phủ cả AppBar/BottomNav):
 ```dart
-KappaLoading.show(); // Hiện
+FKappaLoading.show(); // Hiện
 await processTask();
-KappaLoading.hide(); // Ẩn
+FKappaLoading.hide(); // Ẩn
 ```

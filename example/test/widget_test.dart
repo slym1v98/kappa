@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:fkappa/kappa.dart';
+import 'package:fkappa/fkappa.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:get_it/get_it.dart';
 
 class MockStorage extends Mock implements Storage {}
 
-class SimpleModule extends KappaModule {
+class SimpleModule extends FKappaModule {
   @override
   String get name => 'Simple';
 
@@ -28,16 +28,16 @@ void main() {
     GetIt.instance.reset();
   });
 
-  testWidgets('Verify KappaApp initialization and navigation', (WidgetTester tester) async {
+  testWidgets('Verify FKappaApp initialization and navigation', (WidgetTester tester) async {
     // 1. Mock Storage
     final mockStorage = MockStorage();
     when(() => mockStorage.write(any(), any())).thenAnswer((_) async {});
     when(() => mockStorage.read(any())).thenReturn(null);
 
-    // 2. Build our KappaApp with SimpleModule
+    // 2. Build our FKappaApp with SimpleModule
     await tester.runAsync(() async {
       await tester.pumpWidget(
-        KappaApp(
+        FKappaApp(
           modules: [SimpleModule()],
           initialRoute: '/test',
           storage: mockStorage,

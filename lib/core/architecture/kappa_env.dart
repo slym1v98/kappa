@@ -1,15 +1,15 @@
 /// Supported environment flavors for the application.
-enum KappaFlavor { dev, staging, prod }
+enum FKappaFlavor { dev, staging, prod }
 
 /// A container for environment-specific configuration.
-class KappaEnv {
-  final KappaFlavor flavor;
+class FKappaEnv {
+  final FKappaFlavor flavor;
   final String baseUrl;
   final String? apiKey;
   final String? sentryDsn;
   final Map<String, dynamic> extra;
 
-  const KappaEnv({
+  const FKappaEnv({
     required this.flavor,
     required this.baseUrl,
     this.apiKey,
@@ -17,10 +17,10 @@ class KappaEnv {
     this.extra = const {},
   });
 
-  bool get isDev => flavor == KappaFlavor.dev;
-  bool get isStaging => flavor == KappaFlavor.staging;
-  bool get isProd => flavor == KappaFlavor.prod;
+  bool get isDev => flavor == FKappaFlavor.dev;
+  bool get isStaging => flavor == FKappaFlavor.staging;
+  bool get isProd => flavor == FKappaFlavor.prod;
 
   @override
-  String toString() => 'KappaEnv(flavor: $flavor, baseUrl: $baseUrl)';
+  String toString() => 'FKappaEnv(flavor: $flavor, baseUrl: $baseUrl)';
 }

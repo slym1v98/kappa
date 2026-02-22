@@ -1,7 +1,7 @@
-import 'package:fkappa/kappa.dart';
+import 'package:fkappa/fkappa.dart';
 import 'presentation/pages/dashboard_page.dart';
 
-class DashboardModule extends KappaModule {
+class DashboardModule extends FKappaModule {
   @override
   String get name => 'Dashboard';
 
@@ -9,7 +9,7 @@ class DashboardModule extends KappaModule {
   List<RouteBase> get routes => [
     GoRoute(
       path: '/dashboard',
-      pageBuilder: (context, state) => KappaPageTransition.slideUp(
+      pageBuilder: (context, state) => FKappaPageTransition.slideUp(
         child: const DashboardPage(),
         key: state.pageKey,
       ),

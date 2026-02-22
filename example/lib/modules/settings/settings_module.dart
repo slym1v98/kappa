@@ -1,8 +1,8 @@
-import 'package:fkappa/kappa.dart';
+import 'package:fkappa/fkappa.dart';
 import 'presentation/bloc/settings_bloc.dart';
 import 'presentation/pages/settings_page.dart';
 
-class SettingsModule extends KappaModule {
+class SettingsModule extends FKappaModule {
   @override
   String get name => 'Settings';
 
@@ -10,7 +10,7 @@ class SettingsModule extends KappaModule {
   List<RouteBase> get routes => [
     GoRoute(
       path: '/settings',
-      pageBuilder: (context, state) => KappaPageTransition.zoom(
+      pageBuilder: (context, state) => FKappaPageTransition.zoom(
         child: BlocProvider(
           create: (context) => GetIt.instance<SettingsBloc>(),
           child: const SettingsPage(),

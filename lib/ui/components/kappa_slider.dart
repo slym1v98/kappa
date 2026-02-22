@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'dart:io';
 
-class KappaSlider extends StatelessWidget {
+class FKappaSlider extends StatelessWidget {
   final double value;
   final ValueChanged<double>? onChanged;
   final double min;
   final double max;
   final Color? activeColor;
 
-  const KappaSlider({
+  const FKappaSlider({
     super.key,
     required this.value,
     required this.onChanged,

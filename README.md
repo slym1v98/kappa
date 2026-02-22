@@ -8,7 +8,7 @@ fkappa là một Framework Flutter mã nguồn mở, hiện đại, được thi
 *   **🧩 True Modularity:** Các tính năng là các Module độc lập, có Route và DI riêng, dễ dàng tháo lắp.
 *   **📱 Adaptive UI Kit:** Bộ UI components thông minh tự động thay đổi giao diện theo Android (Material 3) và iOS (HIG).
 *   **⚡ Developer Productivity:** Công cụ CLI mạnh mẽ giúp sinh code và file test tự động chỉ trong vài giây.
-*   **🌐 Advanced Networking:** Tích hợp sẵn `fkappaDio` với cơ chế Offline-First (Cache), Mocking và Error Handling.
+*   **🌐 Advanced Networking:** Tích hợp sẵn `FKappaDio` với cơ chế Offline-First (Cache), Mocking và Error Handling.
 *   **🔐 Enterprise Security:** Hỗ trợ Flavor, Environment Isolation và tự động làm rối mã (Obfuscation).
 *   **🎬 Pro Animations:** Hệ thống hiệu ứng và chuyển trang (Page Transitions) tích hợp sẵn, mượt mà 120FPS.
 
@@ -30,7 +30,7 @@ kappa generate module auth
 ```dart
 void main() {
   runApp(
-    fkappaApp(
+    FKappaApp(
       title: 'My Super App',
       baseUrl: 'https://api.myapp.com',
       modules: [ AuthModule(), MainModule() ],

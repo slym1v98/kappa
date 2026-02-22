@@ -1,9 +1,9 @@
-import 'package:fkappa/kappa.dart';
+import 'package:fkappa/fkappa.dart';
 import 'package:get_it/get_it.dart';
 import 'presentation/bloc/history_bloc.dart';
 import 'presentation/pages/history_page.dart';
 
-class HistoryModule extends KappaModule {
+class HistoryModule extends FKappaModule {
   @override
   String get name => 'History';
 

@@ -3,11 +3,11 @@ import 'package:dio/dio.dart';
 /// A specialized interceptor to mock API responses.
 /// 
 /// You can define a map of [path] -> [data] to simulate server responses.
-class KappaMockInterceptor extends Interceptor {
+class FKappaMockInterceptor extends Interceptor {
   final Map<String, dynamic> mockData;
   final Duration delay;
 
-  KappaMockInterceptor({
+  FKappaMockInterceptor({
     required this.mockData,
     this.delay = const Duration(milliseconds: 500),
   });

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:fkappa/kappa.dart';
+import 'package:fkappa/fkappa.dart';
 import 'modules/counter/counter_module.dart';
 import 'modules/history/history_module.dart';
 import 'modules/user/user_module.dart';
@@ -10,17 +10,17 @@ import 'shared/services/i_auth_service.dart';
 
 void main() async {
   // Use a silent observer or Sentry in Prod
-  Bloc.observer = KappaBlocObserver();
+  Bloc.observer = FKappaBlocObserver();
 
-  const prodEnv = KappaEnv(
-    flavor: KappaFlavor.prod,
+  const prodEnv = FKappaEnv(
+    flavor: FKappaFlavor.prod,
     baseUrl: 'https://api.kappa.io', // Real production API
     sentryDsn: 'https://your-sentry-dsn@sentry.io/123',
   );
 
   runApp(
-    KappaApp(
-      title: 'Kappa Framework',
+    FKappaApp(
+      title: 'fkappa Framework',
       env: prodEnv,
       debugShowCheckedModeBanner: false,
       modules: [

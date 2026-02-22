@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:fkappa/kappa.dart';
+import 'package:fkappa/fkappa.dart';
 import 'modules/counter/counter_module.dart';
 import 'modules/history/history_module.dart';
 import 'modules/user/user_module.dart';
@@ -11,11 +11,11 @@ import 'shared/services/i_auth_service.dart';
 
 void main() async {
   // 1. Setup Global Error Observer
-  Bloc.observer = KappaBlocObserver();
+  Bloc.observer = FKappaBlocObserver();
 
   runApp(
-    KappaApp(
-      title: 'Kappa Enterprise Demo',
+    FKappaApp(
+      title: 'fkappa Enterprise Demo',
       baseUrl: 'https://api.kappa.io',
       modules: [
         UserModule(),

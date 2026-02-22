@@ -58,10 +58,10 @@ flutter:
   plugin:
     platforms:
       android:
-        package: net.flownest.kappa
-        pluginClass: KappaPlugin
+        package: net.flownest.fkappa
+        pluginClass: FKappaPlugin
       ios:
-        pluginClass: KappaPlugin
+        pluginClass: FKappaPlugin
 
   # To add assets to your plugin package, add an assets section, like this:
   # assets:

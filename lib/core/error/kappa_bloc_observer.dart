@@ -3,12 +3,12 @@ import 'package:flutter/foundation.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
 /// Monitors all BLoCs globally for state changes and errors.
-class KappaBlocObserver extends BlocObserver {
+class FKappaBlocObserver extends BlocObserver {
   @override
   void onTransition(Bloc bloc, Transition transition) {
     super.onTransition(bloc, transition);
     if (kDebugMode) {
-      print('Kappa BLoC Transition: ${bloc.runtimeType} -> ${transition.nextState}');
+      print('fkappa BLoC Transition: ${bloc.runtimeType} -> ${transition.nextState}');
     }
   }
 
@@ -16,7 +16,7 @@ class KappaBlocObserver extends BlocObserver {
   void onError(BlocBase bloc, Object error, StackTrace stackTrace) {
     super.onError(bloc, error, stackTrace);
     if (kDebugMode) {
-      print('Kappa BLoC Error in ${bloc.runtimeType}: $error');
+      print('fkappa BLoC Error in ${bloc.runtimeType}: $error');
     }
     
     // Automatically report to Sentry in production

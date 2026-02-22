@@ -1,14 +1,14 @@
 import 'package:flutter/widgets.dart';
 
 /// Professional 12-column grid system for responsive layouts.
-class KappaGrid extends StatelessWidget {
+class FKappaGrid extends StatelessWidget {
   final List<Widget> children;
   final int mobileCols;
   final int tabletCols;
   final int desktopCols;
   final double gutter;
 
-  const KappaGrid({
+  const FKappaGrid({
     super.key,
     required this.children,
     this.mobileCols = 4,
@@ -39,7 +39,7 @@ class KappaGrid extends StatelessWidget {
 }
 
 /// Design Tokens for consistent spacing and styling.
-class KappaDesignTokens {
+class FKappaDesignTokens {
   static const double radiusSmall = 4.0;
   static const double radiusMedium = 8.0;
   static const double radiusLarge = 16.0;

@@ -6,14 +6,14 @@ import 'dart:io';
 ///
 /// On Android: Renders a Material 3 [ElevatedButton].
 /// On iOS: Renders a [CupertinoButton.filled].
-class KappaButton extends StatelessWidget {
+class FKappaButton extends StatelessWidget {
   final String label;
   final VoidCallback onPressed;
   final bool isLoading;
   final Color? color;
   final Color? textColor;
 
-  const KappaButton({
+  const FKappaButton({
     super.key,
     required this.label,
     required this.onPressed,

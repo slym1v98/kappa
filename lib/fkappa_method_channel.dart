@@ -1,13 +1,13 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 
-import 'kappa_platform_interface.dart';
+import 'fkappa_platform_interface.dart';
 
-/// An implementation of [KappaPlatform] that uses method channels.
-class MethodChannelKappa extends KappaPlatform {
+/// An implementation of [FKappaPlatform] that uses method channels.
+class MethodChannelFKappa extends FKappaPlatform {
   /// The method channel used to interact with the native platform.
   @visibleForTesting
-  final methodChannel = const MethodChannel('kappa');
+  final methodChannel = const MethodChannel('fkappa');
 
   @override
   Future<String?> getPlatformVersion() async {

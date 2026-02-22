@@ -1,13 +1,13 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:integration_test/integration_test.dart';
-import 'package:fkappa/kappa.dart';
+import 'package:fkappa/fkappa.dart';
 import 'package:kappa_example/modules/settings/settings_module.dart';
 import 'package:kappa_example/modules/user/user_module.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:mocktail/mocktail.dart';
 
 class MockStorage extends Mock implements Storage {}
-class MockKappaDio extends Mock implements KappaDio {}
+class MockFKappaDio extends Mock implements FKappaDio {}
 
 void main() {
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();
@@ -16,26 +16,26 @@ void main() {
     GetIt.instance.reset();
   });
 
-  testWidgets('integration test for Kappa framework initialization', (WidgetTester tester) async {
+  testWidgets('integration test for fkappa framework initialization', (WidgetTester tester) async {
     // 1. Mock Dependencies
     final mockStorage = MockStorage();
-    final mockDio = MockKappaDio();
+    final mockDio = MockFKappaDio();
     
     when(() => mockStorage.write(any(), any())).thenAnswer((_) async {});
     when(() => mockStorage.read(any())).thenReturn(null);
 
     // Register Mock Dio
-    GetIt.instance.registerSingleton<KappaDio>(mockDio);
+    GetIt.instance.registerSingleton<FKappaDio>(mockDio);
     when(() => mockDio.get(any())).thenAnswer((_) async => Right(Response(
       requestOptions: RequestOptions(path: ''),
       data: {'name': 'Test User'},
       statusCode: 200,
     )));
 
-    // 2. Build the Kappa application
+    // 2. Build the fkappa application
     await tester.runAsync(() async {
       await tester.pumpWidget(
-        KappaApp(
+        FKappaApp(
           modules: [
             UserModule(),
             SettingsModule(),
@@ -53,7 +53,7 @@ void main() {
     // 3. Verify core framework elements
     expect(find.text('Settings'), findsWidgets);
     
-    // Verify that we can interact with Kappa elements
-    expect(find.byType(KappaButton), findsWidgets);
+    // Verify that we can interact with fkappa elements
+    expect(find.byType(FKappaButton), findsWidgets);
   });
 }

@@ -1,4 +1,4 @@
-import 'package:fkappa/kappa.dart';
+import 'package:fkappa/fkappa.dart';
 import 'dart:async';
 import 'package:equatable/equatable.dart';
 import '../../../../shared/events/counter_events.dart';
@@ -48,7 +48,7 @@ class HistoryBloc extends Bloc<HistoryEvent, HistoryState> {
     on<ClearHistoryEvent>((event, emit) => emit(const HistoryState()));
 
     // Listen to Global Event Bus and store subscription
-    _eventSubscription = KappaEventBus.on<CounterIncrementedEvent>().listen((event) {
+    _eventSubscription = FKappaEventBus.on<CounterIncrementedEvent>().listen((event) {
       if (!isClosed) {
         add(RecordEvent(event.newValue, event.timestamp));
       }

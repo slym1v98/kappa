@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
 /// Provides standardized layout and theming helpers for responsive designs.
-mixin KappaResponsive {
+mixin FKappaResponsive {
   /// Breakpoints for different devices.
   static const List<Breakpoint> breakpoints = [
     Breakpoint(start: 0, end: 450, name: MOBILE),
@@ -27,34 +27,34 @@ mixin KappaResponsive {
   }
 }
 
-/// Extends the Material Theme with Kappa specific tokens.
-class KappaThemeExtension extends ThemeExtension<KappaThemeExtension> {
+/// Extends the Material Theme with FKappa specific tokens.
+class FKappaThemeExtension extends ThemeExtension<FKappaThemeExtension> {
   final Color brandColor;
   final double defaultRadius;
 
-  const KappaThemeExtension({
+  const FKappaThemeExtension({
     required this.brandColor,
     this.defaultRadius = 8.0,
   });
 
   @override
-  KappaThemeExtension copyWith({Color? brandColor, double? defaultRadius}) {
-    return KappaThemeExtension(
+  FKappaThemeExtension copyWith({Color? brandColor, double? defaultRadius}) {
+    return FKappaThemeExtension(
       brandColor: brandColor ?? this.brandColor,
       defaultRadius: defaultRadius ?? this.defaultRadius,
     );
   }
 
   @override
-  KappaThemeExtension lerp(ThemeExtension<KappaThemeExtension>? other, double t) {
-    if (other is! KappaThemeExtension) return this;
-    return KappaThemeExtension(
+  FKappaThemeExtension lerp(ThemeExtension<FKappaThemeExtension>? other, double t) {
+    if (other is! FKappaThemeExtension) return this;
+    return FKappaThemeExtension(
       brandColor: Color.lerp(brandColor, other.brandColor, t)!,
       defaultRadius: (defaultRadius + (other.defaultRadius - defaultRadius) * t),
     );
   }
 
-  static KappaThemeExtension of(BuildContext context) {
-    return Theme.of(context).extension<KappaThemeExtension>()!;
+  static FKappaThemeExtension of(BuildContext context) {
+    return Theme.of(context).extension<FKappaThemeExtension>()!;
   }
 }
