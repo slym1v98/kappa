@@ -1,4 +1,4 @@
-import 'package:flownest_kappa/kappa.dart';
+import 'package:fkappa/kappa.dart';
 
 /// Shared event for counter changes.
 /// All modules can publish or subscribe to this.

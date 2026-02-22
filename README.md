@@ -1,14 +1,14 @@
-# Flownest Kappa Framework v1.0.0 🚀
+# fkappa Framework v1.0.0 🚀
 
-Flownest Kappa là một Framework Flutter mã nguồn mở, hiện đại, được thiết kế để xây dựng các ứng dụng mobile quy mô lớn (Enterprise) với tốc độ nhanh kỷ lục nhưng vẫn đảm bảo tính ổn định và bảo mật cao.
+fkappa là một Framework Flutter mã nguồn mở, hiện đại, được thiết kế để xây dựng các ứng dụng mobile quy mô lớn (Enterprise) với tốc độ nhanh kỷ lục nhưng vẫn đảm bảo tính ổn định và bảo mật cao.
 
-## 🌟 Tại sao chọn Flownest Kappa?
+## 🌟 Tại sao chọn fkappa?
 
 *   **🛡️ Strict Clean Architecture:** Ép buộc cấu trúc code sạch thông qua các Base Class (`UseCase`, `Repository`, `DataSource`).
 *   **🧩 True Modularity:** Các tính năng là các Module độc lập, có Route và DI riêng, dễ dàng tháo lắp.
 *   **📱 Adaptive UI Kit:** Bộ UI components thông minh tự động thay đổi giao diện theo Android (Material 3) và iOS (HIG).
 *   **⚡ Developer Productivity:** Công cụ CLI mạnh mẽ giúp sinh code và file test tự động chỉ trong vài giây.
-*   **🌐 Advanced Networking:** Tích hợp sẵn `Flownest KappaDio` với cơ chế Offline-First (Cache), Mocking và Error Handling.
+*   **🌐 Advanced Networking:** Tích hợp sẵn `fkappaDio` với cơ chế Offline-First (Cache), Mocking và Error Handling.
 *   **🔐 Enterprise Security:** Hỗ trợ Flavor, Environment Isolation và tự động làm rối mã (Obfuscation).
 *   **🎬 Pro Animations:** Hệ thống hiệu ứng và chuyển trang (Page Transitions) tích hợp sẵn, mượt mà 120FPS.
 
@@ -18,7 +18,7 @@ Flownest Kappa là một Framework Flutter mã nguồn mở, hiện đại, đư
 Để sử dụng các tính năng sinh code tự động:
 ```bash
 # Trong thư mục dự án của bạn
-alias flownest_kappa='dart run bin/kappa.dart'
+alias ffkappa='dart run bin/kappa.dart'
 ```
 
 ### 2. Tạo Module đầu tiên
@@ -30,7 +30,7 @@ kappa generate module auth
 ```dart
 void main() {
   runApp(
-    Flownest KappaApp(
+    fkappaApp(
       title: 'My Super App',
       baseUrl: 'https://api.myapp.com',
       modules: [ AuthModule(), MainModule() ],

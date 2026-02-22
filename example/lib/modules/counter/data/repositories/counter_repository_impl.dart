@@ -1,4 +1,4 @@
-import 'package:flownest_kappa/kappa.dart';
+import 'package:fkappa/kappa.dart';
 import '../../domain/repositories/i_counter_repository.dart';
 import '../datasources/counter_local_data_source.dart';
 

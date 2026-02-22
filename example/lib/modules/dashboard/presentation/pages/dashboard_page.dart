@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flownest_kappa/kappa.dart';
+import 'package:fkappa/kappa.dart';
 
 class DashboardPage extends StatelessWidget with KappaSpacing {
   const DashboardPage({super.key});

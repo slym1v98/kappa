@@ -1,4 +1,4 @@
-import 'package:flownest_kappa/kappa.dart';
+import 'package:fkappa/kappa.dart';
 import 'package:get_it/get_it.dart';
 import 'presentation/bloc/history_bloc.dart';
 import 'presentation/pages/history_page.dart';

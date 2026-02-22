@@ -1,4 +1,4 @@
-# Kappa Framework Architecture Blueprint
+# fkappa Framework Architecture Blueprint
 
 Tài liệu này mô tả chi tiết các thành phần hạ tầng và triết lý kiến trúc của Kappa.
 

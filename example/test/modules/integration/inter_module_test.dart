@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:flownest_kappa/kappa.dart';
+import 'package:fkappa/kappa.dart';
 import 'package:kappa_example/shared/events/counter_events.dart';
 import 'package:kappa_example/modules/history/presentation/bloc/history_bloc.dart';
 

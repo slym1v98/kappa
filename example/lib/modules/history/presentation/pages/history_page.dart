@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flownest_kappa/kappa.dart';
+import 'package:fkappa/kappa.dart';
 import '../bloc/history_bloc.dart';
 
 class HistoryPage extends StatelessWidget with KappaSpacing {

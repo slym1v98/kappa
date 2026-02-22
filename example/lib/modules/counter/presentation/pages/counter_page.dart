@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flownest_kappa/kappa.dart';
+import 'package:fkappa/kappa.dart';
 import '../bloc/counter_bloc.dart';
 
 class CounterPage extends StatelessWidget with KappaSpacing {

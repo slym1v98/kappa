@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flownest_kappa/kappa.dart';
+import 'package:fkappa/kappa.dart';
 import '../bloc/settings_bloc.dart';
 import '../../../../shared/services/i_auth_service.dart';
 

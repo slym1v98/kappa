@@ -1,4 +1,4 @@
-import 'package:flownest_kappa/kappa.dart';
+import 'package:fkappa/kappa.dart';
 import 'presentation/pages/login_page.dart';
 
 class AuthModule extends KappaModule {

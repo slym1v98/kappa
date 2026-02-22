@@ -1,6 +1,6 @@
-# Kappa Framework - Developer Guide (v1.0.0)
+# fkappa Framework - Developer Guide (v1.0.0)
 
-Hướng dẫn chi tiết cách khai thác tối đa sức mạnh của Kappa Framework.
+Hướng dẫn chi tiết cách khai thác tối đa sức mạnh của fkappa Framework.
 
 ---
 

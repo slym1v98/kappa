@@ -1,4 +1,4 @@
-import 'package:flownest_kappa/kappa.dart';
+import 'package:fkappa/kappa.dart';
 
 /// The contract for data access.
 /// Domain layer only knows about this interface.

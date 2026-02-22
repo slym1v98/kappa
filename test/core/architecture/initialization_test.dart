@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:flownest_kappa/kappa.dart';
+import 'package:fkappa/kappa.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:get_it/get_it.dart';
 
@@ -30,6 +30,7 @@ void main() {
       
       when(() => module.name).thenReturn('TestModule');
       when(() => module.routes).thenReturn([]);
+      when(() => module.isLazy).thenReturn(false);
       when(() => module.registerDependencies(any())).thenReturn(null);
       when(() => module.init()).thenAnswer((_) async {});
       when(() => mockStorage.write(any(), any())).thenAnswer((_) async {});
@@ -58,6 +59,7 @@ void main() {
       
       when(() => module.name).thenReturn('TimeoutModule');
       when(() => module.routes).thenReturn([]);
+      when(() => module.isLazy).thenReturn(false);
       when(() => module.registerDependencies(any())).thenReturn(null);
       when(() => mockStorage.write(any(), any())).thenAnswer((_) async {});
       // Infinite initialization

@@ -1,4 +1,4 @@
-import 'package:flownest_kappa/kappa.dart';
+import 'package:fkappa/kappa.dart';
 
 /// An event that is fired whenever the counter changes.
 /// Other modules can listen to this event.

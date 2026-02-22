@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:flownest_kappa/kappa_platform_interface.dart';
-import 'package:flownest_kappa/kappa_method_channel.dart';
+import 'package:fkappa/kappa_platform_interface.dart';
+import 'package:fkappa/kappa_method_channel.dart';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
 class MockKappaPlatform

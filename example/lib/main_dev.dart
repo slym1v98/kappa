@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flownest_kappa/kappa.dart';
-import 'package:flownest_kappa/core/network/kappa_mock_interceptor.dart';
+import 'package:fkappa/kappa.dart';
+import 'package:fkappa/core/network/kappa_mock_interceptor.dart';
 import 'modules/counter/counter_module.dart';
 import 'modules/history/history_module.dart';
 import 'modules/user/user_module.dart';

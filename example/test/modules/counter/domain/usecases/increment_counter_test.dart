@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:flownest_kappa/kappa.dart';
+import 'package:fkappa/kappa.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:kappa_example/modules/counter/domain/repositories/i_counter_repository.dart';
 import 'package:kappa_example/modules/counter/domain/usecases/increment_counter.dart';

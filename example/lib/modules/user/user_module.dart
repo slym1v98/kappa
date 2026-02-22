@@ -1,4 +1,4 @@
-import 'package:flownest_kappa/kappa.dart';
+import 'package:fkappa/kappa.dart';
 import '../../shared/services/i_auth_service.dart';
 
 class AuthService implements IAuthService {

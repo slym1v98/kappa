@@ -1,4 +1,4 @@
-# Kappa Framework - Security & Signing Guide
+# fkappa Framework - Security & Signing Guide
 
 Tài liệu này hướng dẫn cách bảo mật mã nguồn và cấu hình ký ứng dụng (App Signing) cho từng môi trường (Flavor).
 
