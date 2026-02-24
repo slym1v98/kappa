@@ -8,7 +8,7 @@
 
 ## 1.0.0
 
-The initial stable release of the fkappa Framework. 
+The initial stable release of the FKappa Framework. 
 
 ### Features
 - **Clean Architecture Foundation:** Enforced through `BaseUseCase`, `BaseRepository`, and `Failure` classes.

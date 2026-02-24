@@ -1,9 +1,9 @@
-# fkappa Framework Architecture Blueprint
+# FKappa Framework Architecture Blueprint
 
-Tài liệu này mô tả chi tiết các thành phần hạ tầng và triết lý kiến trúc của fkappa.
+Tài liệu này mô tả chi tiết các thành phần hạ tầng và triết lý kiến trúc của FKappa.
 
 ## 1. Clean Architecture Strict Mode
-fkappa không chỉ khuyến khích mà còn **ép buộc** Clean Architecture qua các lớp trừu tượng:
+FKappa không chỉ khuyến khích mà còn **ép buộc** Clean Architecture qua các lớp trừu tượng:
 
 -   **Domain Layer (Purity):** Tuyệt đối không chứa code UI hoặc Framework (trừ DI). `BaseUseCase` sử dụng `fpdart.Either` để ép buộc việc xử lý lỗi (functional error handling).
 -   **Data Layer (Abstraction):** `BaseRepository` và `BaseDataSource` tách rời nguồn dữ liệu.
@@ -20,7 +20,7 @@ Hệ thống Route của các module được "donate" vào `FKappaApp` để x�
 ### Reactive Connectivity (FKappaDio)
 Được xây dựng trên Dio với:
 -   `DioCacheInterceptor`: Hỗ trợ lưu trữ offline.
--   `fkappaMockInterceptor`: Cho phép giả lập API trả về JSON tĩnh.
+-   `FKappaMockInterceptor`: Cho phép giả lập API trả về JSON tĩnh.
 -   `FKappaBlocObserver`: Giám sát toàn bộ thay đổi trạng thái của app.
 
 ## 3. Communication Patterns

@@ -34,10 +34,10 @@ class FKappaAnimatedView extends StatefulWidget {
   });
 
   @override
-  State<FKappaAnimatedView> createState() => _fkappaAnimatedViewState();
+  State<FKappaAnimatedView> createState() => _FKappaAnimatedViewState();
 }
 
-class _fkappaAnimatedViewState extends State<FKappaAnimatedView> with SingleTickerProviderStateMixin {
+class _FKappaAnimatedViewState extends State<FKappaAnimatedView> with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> _opacity;
   late Animation<double> _scale;

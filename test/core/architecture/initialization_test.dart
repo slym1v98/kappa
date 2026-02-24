@@ -21,7 +21,7 @@ void main() {
     GetIt.instance.reset();
   });
 
-  group('fkappa Initialization Flow Tests', () {
+  group('FKappa Initialization Flow Tests', () {
     testWidgets('Should register dependencies BEFORE initializing modules', (tester) async {
       final sl = GetIt.instance;
       final module = MockModule();

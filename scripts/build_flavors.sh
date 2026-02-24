@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# fkappa Framework - Flavor Build Script
+# FKappa Framework - Flavor Build Script
 
 COMMAND=$1
 FLAVOR=$2

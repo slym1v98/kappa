@@ -1,8 +1,8 @@
-# fkappa Framework v1.0.0 🚀
+# FKappa Framework
 
-fkappa là một Framework Flutter mã nguồn mở, hiện đại, được thiết kế để xây dựng các ứng dụng mobile quy mô lớn (Enterprise) với tốc độ nhanh kỷ lục nhưng vẫn đảm bảo tính ổn định và bảo mật cao.
+FKappa là một Framework Flutter mã nguồn mở, hiện đại, được thiết kế để xây dựng các ứng dụng mobile quy mô lớn (Enterprise) với tốc độ nhanh kỷ lục nhưng vẫn đảm bảo tính ổn định và bảo mật cao.
 
-## 🌟 Tại sao chọn fkappa?
+## 🌟 Tại sao chọn FKappa?
 
 *   **🛡️ Strict Clean Architecture:** Ép buộc cấu trúc code sạch thông qua các Base Class (`UseCase`, `Repository`, `DataSource`).
 *   **🧩 True Modularity:** Các tính năng là các Module độc lập, có Route và DI riêng, dễ dàng tháo lắp.
@@ -18,12 +18,12 @@ fkappa là một Framework Flutter mã nguồn mở, hiện đại, được thi
 Để sử dụng các tính năng sinh code tự động:
 ```bash
 # Trong thư mục dự án của bạn
-alias ffkappa='dart run bin/kappa.dart'
+alias fkappa='dart run bin/kappa.dart'
 ```
 
 ### 2. Tạo Module đầu tiên
 ```bash
-kappa generate module auth
+fkappa generate module auth
 ```
 
 ### 3. Khởi chạy ứng dụng

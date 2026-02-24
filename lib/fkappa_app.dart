@@ -41,7 +41,7 @@ class FKappaApp extends StatefulWidget {
     this.theme,
     this.darkTheme,
     this.themeMode = ThemeMode.system,
-    this.title = 'fkappa App',
+    this.title = 'FKappa App',
     this.debugShowCheckedModeBanner = true,
   });
 
@@ -78,7 +78,7 @@ class _FKappaAppState extends State<FKappaApp> {
       // 2. Initialize Global Networking (FKappaDio)
       final effectiveBaseUrl = widget.env?.baseUrl ?? widget.baseUrl;
       if (effectiveBaseUrl != null && !sl.isRegistered<FKappaDio>()) {
-        if (kDebugMode) print('fkappa: Initializing Global Networking with baseUrl: $effectiveBaseUrl (Flavor: ${widget.env?.flavor})');
+        if (kDebugMode) print('FKappa: Initializing Global Networking with baseUrl: $effectiveBaseUrl (Flavor: ${widget.env?.flavor})');
         final kappaDio = FKappaDio(
           baseUrl: effectiveBaseUrl,
           interceptors: widget.interceptors,
@@ -100,7 +100,7 @@ class _FKappaAppState extends State<FKappaApp> {
         moduleNames.add(module.name);
         
         if (!module.isLazy) {
-          if (kDebugMode) print('fkappa: Registering dependencies for [${module.name}]');
+          if (kDebugMode) print('FKappa: Registering dependencies for [${module.name}]');
           module.registerDependencies(sl);
         }
       }
@@ -108,7 +108,7 @@ class _FKappaAppState extends State<FKappaApp> {
       // 4. Initialize modules (Skip Lazy Modules)
       for (final module in widget.modules) {
         if (!module.isLazy) {
-          if (kDebugMode) print('fkappa: Initializing module [${module.name}]');
+          if (kDebugMode) print('FKappa: Initializing module [${module.name}]');
           await module.init().timeout(const Duration(seconds: 10));
         }
       }
@@ -134,7 +134,7 @@ class _FKappaAppState extends State<FKappaApp> {
       );
 
       if (kDebugMode) {
-        print('fkappa Framework initialized successfully in ${stopwatch.elapsedMilliseconds}ms');
+        print('FKappa Framework initialized successfully in ${stopwatch.elapsedMilliseconds}ms');
       }
 
       if (mounted) {
@@ -144,7 +144,7 @@ class _FKappaAppState extends State<FKappaApp> {
       }
     } catch (e, stack) {
       if (kDebugMode) {
-        print('fkappa Initialization Error: $e');
+        print('FKappa Initialization Error: $e');
         print(stack);
       }
       // You could show a Global Error Screen here if needed

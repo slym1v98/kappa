@@ -8,7 +8,7 @@ class FKappaBlocObserver extends BlocObserver {
   void onTransition(Bloc bloc, Transition transition) {
     super.onTransition(bloc, transition);
     if (kDebugMode) {
-      print('fkappa BLoC Transition: ${bloc.runtimeType} -> ${transition.nextState}');
+      print('FKappa BLoC Transition: ${bloc.runtimeType} -> ${transition.nextState}');
     }
   }
 
@@ -16,7 +16,7 @@ class FKappaBlocObserver extends BlocObserver {
   void onError(BlocBase bloc, Object error, StackTrace stackTrace) {
     super.onError(bloc, error, stackTrace);
     if (kDebugMode) {
-      print('fkappa BLoC Error in ${bloc.runtimeType}: $error');
+      print('FKappa BLoC Error in ${bloc.runtimeType}: $error');
     }
     
     // Automatically report to Sentry in production

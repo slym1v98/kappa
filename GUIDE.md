@@ -1,22 +1,22 @@
-# fkappa Framework - Developer Guide (v1.0.0)
+# FKappa Framework - Developer Guide
 
-Hướng dẫn chi tiết cách khai thác tối đa sức mạnh của fkappa Framework.
+Hướng dẫn chi tiết cách khai thác tối đa sức mạnh của FKappa Framework.
 
 ---
 
-## 1. Công cụ fkappa CLI ⚡
+## 1. Công cụ FKappa CLI ⚡
 
 Sử dụng CLI để duy trì cấu trúc code đồng nhất và tự động sinh test.
 
-| Lệnh                                     | Mô tả                                                    |
-|:-----------------------------------------|:---------------------------------------------------------|
-| `kappa generate module <name>`           | Tạo cấu trúc Module đầy đủ (Data, Domain, Presentation). |
-| `kappa generate usecase <mod> <name>`    | Tạo UseCase kèm file Unit Test mẫu.                      |
-| `kappa generate bloc <mod> <name>`       | Tạo BLoC (Event/State) kèm BLoC Test mẫu.                |
-| `kappa generate repository <mod> <name>` | Tạo Repository Interface và Implementation kèm test.     |
-| `kappa generate datasource <mod> <name>` | Tạo Remote DataSource tích hợp sẵn `FKappaDio`.           |
-| `kappa generate page <mod> <name>`       | Tạo giao diện trang mới với `FKappaAppBar`.               |
-| `kappa generate widget <mod> <name>`     | Tạo widget nhỏ tái sử dụng trong module.                 |
+| Lệnh                                      | Mô tả                                                     |
+|:------------------------------------------|:----------------------------------------------------------|
+| `fkappa generate module <name>`           | Tạo cấu trúc Module đầy đủ (Data, Domain, Presentation).  |
+| `fkappa generate usecase <mod> <name>`    | Tạo UseCase kèm file Unit Test mẫu.                       |
+| `fkappa generate bloc <mod> <name>`       | Tạo BLoC (Event/State) kèm BLoC Test mẫu.                 |
+| `fkappa generate repository <mod> <name>` | Tạo Repository Interface và Implementation kèm test.      |
+| `fkappa generate datasource <mod> <name>` | Tạo Remote DataSource tích hợp sẵn `FKappaDio`.           |
+| `fkappa generate page <mod> <name>`       | Tạo giao diện trang mới với `FKappaAppBar`.               |
+| `fkappa generate widget <mod> <name>`     | Tạo widget nhỏ tái sử dụng trong module.                  |
 
 ---
 
@@ -48,14 +48,14 @@ print(auth.getUserName());
 ## 3. Hệ thống UI & Animation 🎬
 
 ### Adaptive UI Kit
-Các components của fkappa tự động thay đổi theo OS:
-- `FKappaButton`, `fkappaTextField`, `FKappaCard`, `fkappaListTile`.
-- `FKappaAppBar`, `fkappaBottomNavigationBar`, `FKappaLoadingIndicator`.
+Các components của FKappa tự động thay đổi theo OS:
+- `FKappaButton`, `FKappaTextField`, `FKappaCard`, `FKappaListTile`.
+- `FKappaAppBar`, `FKappaBottomNavigationBar`, `FKappaLoadingIndicator`.
 
 ### Animation & Transitions
 Sử dụng hiệu ứng khai báo:
 ```dart
-fkappaAnimatedView(
+FKappaAnimatedView(
   type: FKappaAnimationType.slideInUp,
   delay: Duration(milliseconds: 200),
   child: MyCard(),
